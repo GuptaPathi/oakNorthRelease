@@ -120,7 +120,7 @@ export default class AddressHistory extends LightningElement {
     @api hideTile = false;
     @api propertyEditList = [];
     @api propertyPageCall = false;
-    @api recordTypeId;
+    @api recordTypeId; 
     @api summaryPageCall = false;
     @api utillCmpObject;
 
