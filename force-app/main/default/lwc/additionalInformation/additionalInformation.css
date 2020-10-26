@@ -1,0 +1,107 @@
+.primary-button:hover {
+    color: #000;
+}
+
+.primary-button {
+    background: #39ac7c;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 37px 0 46px 0px;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.margintp40 {
+    margin-top: 20px;
+}
+
+.padding16 {
+    padding: 0px 16px
+}
+
+.margin30 {
+    margin: 0px 32px 0px 32px;
+}
+
+.slds-card__header {
+    display: none;
+}
+
+.link {
+    text-decoration: underline;
+    color: #3e3e3c;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+.textarea textarea {
+    border: 2px solid #39AC7C;
+    width: 100%;
+}
+
+.editicon {
+    text-align: right;
+    position: absolute;
+    right: 60px;
+    margin-top: 10px;
+}
+
+.textarea label {
+    display: none;
+}
+
+a {
+    color: #000;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.width100 {
+    width: 100%;
+    display: block;
+    clear: both;
+    text-align: center;
+}
+
+.content {
+    width: 85%;
+    float: left;
+    line-height: 20px;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.tickbox {
+    float: left;
+    width: 35px;
+    padding-top: 3px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 600px) {
+    .editicon {
+        text-align: right;
+        position: absolute;
+        right: 30px;
+    }
+    .padding16 {
+        padding: 0px;
+    }
+    .primary-button {
+        width: 92%;
+    }
+}

@@ -1,0 +1,91 @@
+<!-- ======================================================== 
+    * @template name : splashRightContent.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds all spalsh page sections content.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+    <ul class="slds-welcome-mat__tiles slds-welcome-mat__tiles_info-only mobilemargin">
+
+        <div class="slds-align_absolute-center form_b_access">
+            <div class="slds-p-around_xx-small">
+                <button class="toggle-buttons form_A_button toggle-buttons_active" onclick={handleFormA}></button>
+            </div>
+            <div class="slds-p-around_xx-small">
+                <button class="toggle-buttons form_B_button toggle-buttons_Inactive" onclick={handleFormB}></button>
+            </div>
+        </div>
+
+        <div class="slds-p-top_medium slds-p-bottom_small slds-text-align_center slds-text-heading_medium">
+            {label.UI_Text_Label_NeedFolInfo}
+        </div>
+        <div class="form_A slds-show">
+            <template for:each={form_A_content} for:item="eachItem">
+                <li class="slds-welcome-mat__tile slds-welcome-mat__tile_info-only slds-border_around" key={eachItem.name}>
+
+                    <div class="slds-media">
+
+                        <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center "
+                            style="margin-right: 0px;">
+                            <div class="slds-welcome-mat__tile-figure">
+                                <div class="slds-welcome-mat__tile-icon-container">
+                                    <span class="slds-icon_container  slds-icon_container_circle ">
+                                        <lightning-icon icon-name={eachItem.splashIconName} size="medium"
+                                            alternative-text="Personal Details" title="Personal"
+                                            class="slds-icon__container--circle" style="background-color:#39ac7c;
+                                            fill:white !important;">
+                                        </lightning-icon>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-media__body">
+                            <div class="slds-welcome-mat__tile-body tileContentBox">
+                                <h3 class="heading">{eachItem.label}
+                                </h3>
+                                <p class="des">
+                                    {eachItem.description}
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </template>
+        </div>
+
+        <div class="form_B form_b_access slds-hide">
+            <template for:each={form_B_content} for:item="eachItem">
+                <li class="slds-welcome-mat__tile slds-welcome-mat__tile_info-only slds-border_around slds-welcome-mat__tiles slds-welcome-mat__tiles_info-only margin" key={eachItem.name}>
+
+                    <div class="slds-media">
+                        <div class="slds-media__figure slds-media__figure_fixed-width slds-align_absolute-center">
+                            <div class="slds-welcome-mat__tile-figure">
+                                <div class="slds-welcome-mat__tile-icon-container">
+                                    <span class="slds-icon_container  slds-icon_container_circle ">
+                                        <lightning-icon icon-name={eachItem.splashIconName} size="medium"
+                                            alternative-text="Personal Details" title="Personal"
+                                            class="slds-icon__container--circle formB_icon" style="background-color:#39ac7c;fill:white !important;" variant="inverse">
+                                        </lightning-icon>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="slds-media__body">
+                            <div class="slds-welcome-mat__tile-body tileContentBox">
+                                <h3 class="heading">{eachItem.label}</h3>
+                                <p class="des">
+                                    {eachItem.description}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </li>
+            </template>
+        </div>
+
+    </ul>
+
+</template>

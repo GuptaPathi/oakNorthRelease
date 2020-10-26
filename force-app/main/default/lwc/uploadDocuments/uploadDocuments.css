@@ -1,0 +1,175 @@
+.title {
+    display: inline-block;
+    font-size: 12px;
+    color: #666666;
+    width: 89%;
+    padding: 7px 7px 7px 20px;
+}
+
+.docList {
+    border: 1px solid #d1d1d1;
+    width: 91%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.blockele {
+    display: inline-block;
+}
+
+.slds-button {
+    border: none;
+    outline: none;
+    fill: red;
+}
+
+.primary-button {
+    background: #39ac7c;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+    margin: 28px auto 60px 0px
+}
+
+.primary-button:hover {
+    color: #000;
+}
+
+.formobile {
+    width: 48%;
+    float: left;
+}
+
+.text-pi {
+    font-size: 14px;
+    line-height: 23px;
+    margin-bottom: 0px;
+}
+
+.margin16 {
+    margin: 16px
+}
+
+.skip {
+    background: #eaeaea;
+    width: 187px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #000;
+    font-size: 18px;
+    margin: 60px 0;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+    margin-right: 20px;
+}
+
+.mobilenone {
+    display: inline-block;
+    text-align: center;
+}
+
+.skipmobile {
+    display: none;
+}
+
+.width100 {
+    width: 100%;
+    text-align: center;
+}
+
+.skip:hover {
+    color: #999;
+}
+
+.skipm {
+    display: none;
+}
+
+.displayonmobile {
+    display: none
+}
+
+@media (max-width: 480px) {
+    .formobile {
+        width: 100%;
+    }
+    .primary-button {
+        width: 92%;
+    }
+    .blockele {
+        display: block;
+    }
+    .skipm {
+        display: block;
+        margin-bottom: 20px;
+        color: #000;
+        text-decoration: underline;
+    }
+    .displayonmobile {
+        display: block;
+    }
+    .mobile {
+        padding: 0px!important;
+    }
+    .docList {
+        width: 100%;
+    }
+    .mobilenone {
+        display: none;
+    }
+    .margin16 {
+        padding: 0px;
+    }
+    .skip {
+        width: 100%;
+        margin: 0px auto;
+    }
+    .button1 {
+        margin: 10px auto 20px 0px!important;
+        width: 98%!important;
+    }
+    .button2 {
+        margin: 20px auto 10px 0!important;
+    }
+    .skipmobile {
+        display: block;
+        margin: 20px 0 40px 0px;
+        text-align: center;
+        color: #000;
+        text-decoration: underline;
+    }
+    .padding16 {
+        margin-top: 0px;
+        padding: 0px;
+    }
+    .title {
+        display: inline-block;
+        font-size: 12px;
+        color: #666;
+        width: 79%;
+        padding: 7px 7px 7px 10px;
+    }
+    .primary-button {
+        margin: 0px auto 20px 0
+    }
+}
+
+
+/* Media Query for low resolution  Tablets, Ipads */
+
+@media (min-width: 481px) and (max-width: 767px) {}
+
+
+/* Media Query for Tablets Ipads portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px) {}

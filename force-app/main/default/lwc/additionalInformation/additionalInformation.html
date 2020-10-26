@@ -1,0 +1,54 @@
+<!-- ================================================================================== 
+    * @template name : additionalInformation.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all Customer Additional Information records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+======================================================================================-->
+<template>
+	<lightning-card>
+		<!-- START INPUT FIELDS-->
+		<div class="slds-m-around_medium padding16" style="padding-top: 0px; margin-top: -20px;">
+
+			<lightning-radio-group name="public_office_check__c" label={label.UI_Text_Label_AdditiQues}
+				options={options} value={additionalRecordData.public_office_check__c} type="radio"
+				onchange={handleChange} required
+				message-when-value-missing={utillCmpObject.objErrorMessages.Public_office_declaration}>
+			</lightning-radio-group>
+
+			<template if:true={additionalRecordData.public_office_flag}>
+				<lightning-textarea name="Additional_information__c" label=" "
+					message-when-bad-input={utillCmpObject.objErrorMessages.Text_number_pattern}
+					value={additionalRecordData.Additional_information__c} onchange={handleChange} required
+					message-when-value-missing={utillCmpObject.objErrorMessages.Public_office_declaration_selected_yes}
+					class="slds-size_4-of-4 textarea additionalText">
+				</lightning-textarea>
+			</template>
+
+<div class="slds-form-element">
+    <div class="slds-form-element__control">
+        <div class="slds-checkbox margintp40 checkbox">
+            <span class="tickbox">
+							<lightning-input id="checkbox" type='checkbox' name="Additional_Details_Confirmation__c"
+								required message-when-value-missing="Please accept the terms"
+								value={Additional_Details_Confirmation__c} onchange={handleClick}
+								checked={additionalRecordData.Additional_Details_Confirmation__c}>
+							</lightning-input>
+						</span><label for="checkbox" class="content">I confirm that the information provided is correct
+							and I have read and accept all of the information and <a
+								href="https://www.oaknorth.co.uk/privacy-notice/lending-products/"
+								target="blank">Privacy Notice</a> document provided.
+						</label>
+        </div>
+    </div>
+</div>
+
+<div class="width100">
+    <button name="pi" onclick={handleNext} slot="footer" class="primary-button">
+					{label.UI_Button_Label_Next}
+				</button>
+</div>
+
+</div>
+<!-- END INPUT FIELDS-->
+</lightning-card>
+</template>

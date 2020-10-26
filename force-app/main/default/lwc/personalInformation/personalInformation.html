@@ -1,0 +1,64 @@
+<!-- ================================================================================== 
+    * @template name : personalInformation.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds all Customer Personal Information records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+======================================================================================-->
+<template>
+	<lightning-card>
+		<div class="slds-m-around_medium form-element pi-top">
+            
+            <div class="slds-grid slds-wrap mobilemargin">
+				<p class="text-pi">{label.UI_Text_Label_Names}</p>
+				<lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small" name='Name' label={label.UI_Input_Label_FullName} type="text" value={fullLegalName} onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name} pattern="([a-zA-Z- ])*" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_dash_pattern}></lightning-input>
+				<lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name="Other_Name_Alias_Check__c" label={label.UI_Input_Label_AliasQues} options={options} value={personalRecordData.Other_Name_Alias_Check__c} type="radio" onchange={aliasNamesSelection} required message-when-value-missing={utillCmpObject.objErrorMessages.Other_names_aliases}></lightning-radio-group>
+            </div>
+            
+			<!-- Showing Alias Input Text when alias radio button is checked-->
+			<template if:true={showAliasTextBox}>
+				<div class="slds-border_top slds-border_bottom slds-p-top_small slds-p-bottom_small alias-section aliasBock">
+					<template iterator:it={aliasNameData}>
+
+						<!--Alias input text block-->
+						<ul key={it.value.index} class="slds-grid slds-p-top_small">
+							<lightning-input value={it.value.Name} name="Other_Name_Alias__c" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_dash_pattern} onchange={aliasNamesChange} data-index={it.index} label={label.UI_Input_Label_Alias} type="text" class="slds-size_2-of-4 slds-p-left_x-small aliasname" pattern="([a-zA-Z- ])*" message-when-value-missing={utillCmpObject.objErrorMessages.Other_name_selected_yes} required></lightning-input>
+							<div>
+								<button class="alisbuttons" if:false={aliasFlag} data-index={it.index} onclick={removeAlias} title="Remove alias Namee">
+									<svg class="slds-button__icon slds-button__icon_left" style="fill: #fff;" aria-hidden="true">
+										<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+									</svg>
+								</button>
+                            </div>
+                            
+							<div if:true={it.last}>
+								<button class="mobilehid alisbuttons" style="fill: #fff; margin-right: 10px;" data-index={it.index} onclick={addAlias} title="Remove alias Namee">
+									<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+										<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+									</svg>
+								</button>
+                            </div>
+                            
+                        </ul>
+                        
+                        <!--Alias input text block for mobile-->
+						<ul key={it.value} class="slds-grid slds-p-top_small" style="text-align: center;display: block;">
+
+							<div if:true={it.last}>
+								<a class="mobileshow" style="fill: #fff; margin-right: 10px;" data-index={it.index} onclick={addAlias} alternative-text="remove" title="Remove alias Namee"> <span>{label.UI_Text_Label_AddAnother}</span>
+								</a>
+                            </div>
+                            
+						</ul>
+					</template>
+				</div>
+            </template>
+            
+			<div class="slds-grid slds-wrap mobilemargin">
+				<lightning-input data-id="dateOfBirth" name='Birthdate' date-style="medium" value={personalRecordData.Birthdate} label={label.UI_Input_Label_DOB} type="date" onchange={handleChange} message-when-value-missing={utillCmpObject.objErrorMessages.Date_of_birth} class=" slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" required></lightning-input>
+				<lightning-combobox name="Home_Country__c" label={label.UI_Input_Label_COB} placeholder="Select Country" options={lstCountry} onchange={handleChange} value={personalRecordData.Home_Country__c} class="slds-size--1-of-1 slds-medium-size--1-of-2 padding-right  slds-large-size--1-of-2 slds-p-left_xx-small" message-when-value-missing={utillCmpObject.objErrorMessages.Country_of_birth} required></lightning-combobox>
+            </div>
+            
+			<button name="pi" onclick={handleNext} class="slds-align_absolute-center slds-p-top_small primary-button">{label.UI_Button_Label_Next}</button>
+		</div>
+	</lightning-card>
+</template>

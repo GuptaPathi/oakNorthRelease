@@ -1,0 +1,158 @@
+.slds-border_top .slds-border_bottom {
+    border-color: #39ac7c;
+}
+
+.slds-combobox__input {
+    border-color: #39ac7c;
+}
+
+.text-pi {
+    margin: 0px;
+    width: 100%;
+    font-size: 18px;
+    font-weight: 900;
+    padding-bottom: 0px;
+}
+
+.alisbuttons {
+    border: none;
+    background: #9CD6BE;
+    border-radius: 4px;
+    width: 43px;
+    height: 43px;
+    margin: 57px 0 0px 6px;
+    -webkit-transition: all .5s ease;
+}
+
+.alisbuttons:hover {
+    background: #39AC7C
+}
+
+.alisbuttons svg {
+    fill: rgb(255, 255, 255);
+    padding: 0px;
+    margin: 0px;
+    width: 23px;
+    height: 23px;
+}
+
+.primary-button:hover {
+    color: #000;
+}
+
+.primary-button {
+    background: #39AC7C;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 60px 0;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+    vertical-align: text-top;
+    margin: 60px auto 60px auto;
+}
+
+.slds-radio radio {
+    color: #000!important;
+}
+
+.alias-del svg {
+    color: #fff;
+}
+
+.alias-del {
+    background: #9CD6BE;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4PX;
+    width: 43px;
+    height: 43px;
+}
+
+.alias-section {
+    margin-top: 20px;
+    background: #ECF6F2;
+    border-top: 1px solid #97D4BB;
+    border-bottom: 1px solid #97D4BB;
+    padding: 0px 0px 30px 20px;
+    margin-bottom: 10px;
+}
+
+.padding-right {
+    padding-left: 30px;
+}
+
+.form-element .input[type=text] {
+    width: 395px;
+    height: 43px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.margintop40 {
+    margin-top: 40px;
+}
+
+.margintop20 {
+    margin-top: 20px;
+}
+
+.pi-top {
+    margin: 0px 30px
+}
+
+.mobilehid {
+    display: block;
+}
+
+.mobileshow {
+    display: none;
+}
+
+.aliasname {
+    padding-right: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+    .padding-right {
+        padding-right: 0px;
+        padding-left: 4px;
+    }
+    .pi-top {
+        margin: 0px
+    }
+    .primary-button {
+        width: 92%;
+    }
+    .alias-section {
+        padding: 0 0 30px 3px;
+    }
+    .aliasname {
+        padding-right: 0px;
+        width: 80%;
+        margin-right: 6px;
+    }
+    .mobilehid {
+        display: none;
+    }
+    .mobilemargin {
+        margin: 0px 10px
+    }
+    .mobileshow {
+        color: #000;
+        text-decoration: underline;
+        display: block;
+        padding: 20px;
+        font-size: 14px;
+    }
+    .mobileshow:hover {
+        color: #000;
+        text-decoration: none;
+    }
+}

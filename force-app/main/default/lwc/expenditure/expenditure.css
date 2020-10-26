@@ -1,0 +1,219 @@
+.main-container {
+                                                                margin: 20px 20px 10px 20px;
+                                                                background: #ecf6f2;
+                                                                border-top: 1px solid #97d4bb;
+                                                                border-bottom: 1px solid #97d4bb;
+                                                                padding: 0 15px 30px 15px;
+                                                            }
+                                                            
+                                                            .rightsec .slds-input {
+                                                                background: none;
+                                                            }
+                                                            
+                                                            .primary-button:hover {
+                                                                color: #000;
+                                                            }
+                                                            
+                                                            .primary-button {
+                                                                background: #39AC7C;
+                                                                width: 257px;
+                                                                height: 48px;
+                                                                border: none;
+                                                                outline: none;
+                                                                border-radius: 41px;
+                                                                color: #fff;
+                                                                font-size: 18px;
+                                                                margin: 60px 0;
+                                                                line-height: 0px;
+                                                                padding: 0px;
+                                                                display: block;
+                                                                text-align: center;
+                                                                margin: 53px auto 50px auto
+                                                            }
+                                                            
+                                                            .container {
+                                                                padding: 0px 30px;
+                                                            }
+                                                            
+                                                            .heading {
+                                                                font-size: 18px;
+                                                                font-weight: 900;
+                                                                margin: 0px 20px 30px 20px;
+                                                            }
+                                                            
+                                                            .greentile {
+                                                                margin-bottom: 10px;
+                                                                background: #F6FBF9;
+                                                                border-top: 1px solid #39AD7C;
+                                                                border-bottom: 1px solid #39AD7C;
+                                                                padding: 20px 42px;
+                                                                display: table;
+                                                                width: 100%;
+                                                            }
+                                                            
+                                                            .leftsec {
+                                                                width: 65%;
+                                                                font-size: 16px;
+                                                                color: #000;
+                                                                font-weight: 700;
+                                                                display: table-cell;
+                                                                /* position: relative; */
+                                                                vertical-align: middle;
+                                                                line-height: 32px;
+                                                            }
+                                                            
+                                                            .editicon {
+                                                                width: 10%;
+                                                                text-align: right;
+                                                                display: table-cell;
+                                                                position: relative;
+                                                                vertical-align: middle;
+                                                                /* padding-right: 24px; */
+                                                                width: 10%;
+                                                                text-align: right;
+                                                            }
+                                                            
+                                                            .rightsec {
+                                                                width: 25%;
+                                                                font-size: 16px;
+                                                                color: #000;
+                                                                font-weight: 700;
+                                                                display: table-cell;
+                                                                /* position: relative; */
+                                                                vertical-align: middle;
+                                                                text-align: right;
+                                                                background: none !important;
+                                                            }
+                                                            
+                                                            .edit {
+                                                                float: left;
+                                                                width: 56%;
+                                                                text-align: left;
+                                                                display: table-cell;
+                                                                /* position: relative; */
+                                                                vertical-align: middle;
+                                                                margin-right: 10px;
+                                                            }
+                                                            
+                                                            .slds-input[disabled],
+                                                            .slds-input.slds-is-disabled {
+                                                                background: red;
+                                                            }
+                                                            
+                                                            .monthly {
+                                                                background: #fff;
+                                                                border-radius: 4px;
+                                                                color: #999;
+                                                                font-size: 12px;
+                                                                margin-left: 10px;
+                                                                padding: 10px 20px;
+                                                                font-weight: bold;
+                                                                text-align: right;
+                                                                display: table-cell;
+                                                                position: relative;
+                                                                vertical-align: middle;
+                                                            }
+                                                            
+                                                            @media (max-width: 480px) {
+                                                                .monthly {
+                                                                    background: #fff;
+                                                                    color: #999;
+                                                                    font-size: 12px;
+                                                                    font-weight: 700;
+                                                                    text-align: right;
+                                                                    display: revert;
+                                                                    margin-top: 20px;
+                                                                    top: 8px;
+                                                                    margin-left: 0px;
+                                                                }
+                                                                .editicon {
+                                                                    display: inline-block;
+                                                                    vertical-align: middle;
+                                                                    text-align: right;
+                                                                    top: 0px;
+                                                                    left: 10px;
+                                                                }
+                                                                .primary-button {
+                                                                    margin: 30px auto 30px;
+                                                                }
+                                                                .edit {
+                                                                    float: left;
+                                                                    width: 61%;
+                                                                    text-align: left;
+                                                                    display: inline-block;
+                                                                    vertical-align: middle;
+                                                                    margin-right: 10px;
+                                                                }
+                                                                .leftsec {
+                                                                    width: 90%;
+                                                                    font-size: 16px;
+                                                                    color: #000;
+                                                                    font-weight: 700;
+                                                                    display: block;
+                                                                    vertical-align: middle;
+                                                                    line-height: 32px;
+                                                                }
+                                                                .container {
+                                                                    padding: 0px;
+                                                                }
+                                                                .greentile {
+                                                                    margin-bottom: 10px;
+                                                                    background: #f6fbf9;
+                                                                    border-top: 1px solid #39ad7c;
+                                                                    border-bottom: 1px solid #39ad7c;
+                                                                    padding: 20px 12px;
+                                                                    display: block;
+                                                                }
+                                                                .rightsec {
+                                                                    width: 85%;
+                                                                    font-size: 16px;
+                                                                    color: #000;
+                                                                    font-weight: 700;
+                                                                    background: none!important;
+                                                                    float: none;
+                                                                    display: inline-block;
+                                                                }
+                                                            }
+                                                            /* Media Query for low resolution  Tablets, Ipads */
+                                                            
+                                                            @media (min-width: 481px) and (max-width: 767px) {
+                                                                .rightsec {
+                                                                    width: 35%;
+                                                                    font-size: 16px;
+                                                                    color: #000;
+                                                                    font-weight: 700;
+                                                                    background: none!important;
+                                                                }
+                                                                .container {
+                                                                    padding: 10px;
+                                                                }
+                                                                .leftsec {
+                                                                    width: 35%;
+                                                                    font-size: 16px;
+                                                                    color: #000;
+                                                                    font-weight: 700;
+                                                                    display: table-cell;
+                                                                    vertical-align: middle;
+                                                                    line-height: 32px;
+                                                                }
+                                                            }
+                                                            /* Media Query for low resolution  Tablets, Ipads */
+                                                            
+                                                            @media (min-width: 768px) and (max-width: 1024px) {
+                                                                .rightsec {
+                                                                    width: 35%;
+                                                                    font-size: 16px;
+                                                                    color: #000;
+                                                                    font-weight: 700;
+                                                                    background: none!important;
+                                                                }
+                                                                .leftsec {
+                                                                    width: 35%;
+                                                                    font-size: 16px;
+                                                                    color: #000;
+                                                                    font-weight: 700;
+                                                                    display: table-cell;
+                                                                    vertical-align: middle;
+                                                                    line-height: 32px;
+                                                                }
+                                                            }

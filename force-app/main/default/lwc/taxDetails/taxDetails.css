@@ -1,0 +1,173 @@
+.primary-button {
+    background: #39AC7C;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 60px 0;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+    vertical-align: text-top;
+    margin: 37px auto 44px auto
+}
+
+button:focus {
+    outline: none;
+}
+
+.delicon {
+    position: relative;
+    top: 50px;
+    left: 20px;
+}
+
+.addicon {
+    position: relative;
+    top: 50px;
+    left: 20px;
+}
+
+.padding10 {
+    padding-left: 10px;
+}
+
+.pi-top {
+    margin: 0 32px
+}
+
+.section {
+    margin-top: 20px;
+    background: #ecf6f2;
+    border-top: 1px solid #97d4bb;
+    border-bottom: 1px solid #97d4bb;
+    padding: 0 0 30px 20px;
+    margin-bottom: 10px;
+}
+
+.add {
+    border: none;
+    background: #9cd6be;
+    border-radius: 4px;
+    width: 43px;
+    height: 43px;
+    margin: 57px 0 0;
+    -webkit-transition: all .5s ease;
+}
+
+.add:hover {
+    background: #39AC7C
+}
+
+.primary-button:hover {
+    color: #000;
+}
+
+.alias-section {
+    margin-top: 20px;
+    background: #ecf6f2;
+    border-top: 1px solid #97d4bb;
+    border-bottom: 1px solid #97d4bb;
+    padding: 0 0 30px 20px;
+    margin-bottom: 10px;
+}
+
+.alisbuttons {
+    border: none;
+    background: #9CD6BE;
+    border-radius: 4px;
+    width: 43px;
+    height: 43px;
+    margin: 57px 0 0px 6px;
+    -webkit-transition: all .5s ease;
+}
+
+.alisbuttons:hover {
+    background: #39AC7C
+}
+
+.alias-del svg {
+    color: #fff;
+}
+
+.mobilehid {
+    display: block;
+}
+
+.mobileshow {
+    display: none;
+}
+
+.alias-del {
+    background: #9CD6BE;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4PX;
+    width: 43px;
+    height: 43px;
+}
+
+.alisbuttons svg {
+    fill: rgb(255, 255, 255);
+    padding: 0px;
+    margin: 0px;
+    width: 23px;
+    height: 23px;
+}
+
+.heading {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+@media only screen and (max-width: 600px) {
+    .section {
+        padding: 0 0 0px 3px;
+    }
+    .addicon {
+        position: relative;
+        top: 50px;
+        left: 0px;
+    }
+    .pi-top {
+        margin: 0;
+    }
+    .padding-right {
+        padding-right: 0px;
+    }
+    .primary-button {
+        width: 92%;
+    }
+    .alias-section {
+        padding: 0 0 30px 3px;
+    }
+    .aliasname {
+        padding-right: 0px;
+        width: 80%;
+        margin-right: 6px;
+    }
+    .mobilehid {
+        display: none;
+    }
+    .mobilemargin {
+        margin: 0px 10px
+    }
+    .mobileshow {
+        color: #000;
+        text-decoration: underline;
+        display: block;
+        padding: 20px;
+        margin: 20px auto;
+        font-size: 14px;
+    }
+    .mobileshow:hover {
+        color: #000;
+        text-decoration: none;
+    }
+    .heading {
+        margin: 0px 20px;
+    }
+}

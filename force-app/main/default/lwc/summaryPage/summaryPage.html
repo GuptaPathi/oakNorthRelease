@@ -1,0 +1,108 @@
+<!-- ================================================================================== 
+    * @template name : summaryPage.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds all Customer Form - A Information records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+======================================================================================-->
+<template>
+	<template if:true={summaryDetails}>
+		<div class="slds-p-around_medium padding30">
+			<div class="slds-p-top_small slds-p-laft_medium">
+				<p class="heading">{label.UI_Text_Label_Summary}</p> <span class="slds-border_bottom header headings_col">{label.UI_Section_Label_PI}</span>
+				<template if:true={summaryDetails.PersonalDetails}>
+					<div class="slds-box slds-grid slds-wrap  detailBoxShade slds-p-top_small slds--bottom_medium">
+						<div class="width1">
+							<label class="Community"><strong>{label.UI_Text_Label_Name}</strong>
+							</label>{summaryDetails.PersonalDetails.FirstName} {summaryDetails.PersonalDetails.LastName}</div>
+						<div class="width1"><span class="Community"><strong>{label.UI_Text_Label_DateOfBirth}
+                                </strong>&nbsp; </span> 
+							<lightning-formatted-date-time value={summaryDetails.PersonalDetails.Birthdate} year="numeric" month="short" day="2-digit"></lightning-formatted-date-time>
+                        </div>
+                        
+						<div class="width1"><span class="Community"><strong></strong>{label.UI_Text_Label_CountryOfBirth}
+                                </strong></span> {summaryDetails.PersonalDetails.Home_Country__c}</div>
+						<div class="editicon">
+							<lightning-button-icon variant="bare" name="PersonalDetails" icon-name="utility:edit" onclick={handleEdit}></lightning-button-icon>
+                        </div>
+                        
+                    </div>
+                    
+				</template>
+<template if:false={summaryDetails.PersonalDetails}>{label.UI_Text_Label_NoPerInfoFound}</template>
+</div>
+<div class="slds-p-top_medium slds-p-laft_medium paddingt30 "> <span class="slds-border_bottom header headings_col">{label.UI_Section_Label_AddressHistory}</span>
+    <template if:true={addressHistoryFlag}>
+					<c-tile-component  edit-button-flag="true" address-list={summaryDetails.AddressHistory}></c-tile-component>
+				</template>
+    <template if:false={addressHistoryFlag}>{label.UI_Text_Label_NoAddDetails}</template>
+</div>
+
+<div class="slds-p-top_medium slds-p-laft_medium paddingt30"> <span class="slds-border_bottom header headings_col">{label.UI_Text_Label_Citizenship}</span>
+    <template if:true={taxDetailsFlag}>
+					<template for:each={summaryDetails.TaxDetails} for:item="taxData">
+						<ul key={taxData.Tax_Identification_Number__c} class="slds-wrap marginbtm10">
+							<div class="slds-wrap slds-box detailBoxShade slds-grid"> <span class="slds-size--6-of-6 slds-medium-size--1-of-2 slds-large-size--2-of-6 lineheight">{taxData.Citizenship_Country__c}</span>
+								<span class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--2-of-6 lineheight">{taxData.Tax_Identification_Number__c}</span>
+								<div class="editicon margintp0">
+									<lightning-button-icon variant="bare" name="TaxDetails" icon-name="utility:edit" onclick={handleEdit}></lightning-button-icon>
+								</div>
+							</div>
+						</ul>
+					</template>
+    </template>
+    <template if:false={taxDetailsFlag}>{label.UI_Text_Label_NoTaxFound}</template>
+</div>
+
+<div class="slds-p-top_medium slds-p-laft_medium paddingt30"> <span class="slds-border_bottom header headings_col">{label.UI_Section_Label_AdditionalDetails} <div class="editicon">
+        <lightning-button-icon variant="bare" name="AdditionalDetails"
+            icon-name="utility:edit" onclick={handleEdit}></lightning-button-icon>
+    </div></span>
+    <span class="txt">{label.UI_Text_Label_AdditiQues}</span>
+    <template if:true={additionalFlag}>
+					<template for:each={summaryDetails.AdditionalDetails} for:item="additionalData">
+						<ul key={additionalData.Additional_information__c}>
+							<div class="radio">
+								<div if:true={additionalData.Additional_information__c} class="lineheight slds-size_6-of-6">
+									<label for="Yes">{label.UI_Text_Label_YesLabel}</label>
+								</div>
+								<div if:false={additionalData.Additional_information__c} class="lineheight slds-size_6-of-6">
+									<label for="No">{label.UI_Text_Label_NoLabel}</label>
+								</div>
+								<div class="lineheight">{additionalData.Additional_information__c}</div>
+							</div>
+						</ul>
+					</template>
+    </template>
+    <template if:false={additionalFlag}>{label.UI_Text_Label_NoAddDetails}</template>
+</div>
+<div class="slds-p-top_medium slds-p-laft_medium paddingt30"> <span class="slds-border_bottom header headings_col">{label.UI_Section_Label_SupportingDocuments}
+    <div class="editicon margintp0" >
+        <lightning-button-icon variant="bare" name="SupportingDocuments"
+            icon-name="utility:edit" onclick={handleEdit}></lightning-button-icon>
+    </div>
+</span>
+    <template if:true={supportingDocsFlag}>
+					<template for:each={files} for:item="eachItem">
+						<ul key={eachItem.Id} class="docList"> <span>
+                                <p class="title">
+                                    {eachItem.ContentDocument.Title}</p>
+                            </span>
+						</ul>
+					</template>
+    </template>
+    <template if:false={supportingDocsFlag}>{label.UI_Text_Label_NoDocs}</template>
+</div>
+<div class="slds-form-element">
+    <div class="slds-form-element__control">
+        <div class="slds-checkbox margintp40 checkbox"> <span class="tickbox"><lightning-input id="checkbox" type='checkbox' name="Summary_Confirmation__c" required message-when-value-missing={utillCmpObject.objErrorMessages.Confirmation} value={summaryInfo.Summary_Confirmation__c} onchange={handleClick} checked={summaryInfo.Summary_Confirmation__c}>
+            </lightning-input></span>
+            <label for="checkbox" class="content">I confirm that the information provided is correct and I have read and accept all of the information and <a href="https://www.oaknorth.co.uk/privacy-notice/lending-products/" target="blank">Privacy Notice </a>document provided.</label>
+        </div>
+    </div>
+</div>
+</div>
+<div class="width100">
+    <button name="Summary" onclick={handleNext} class="primary-button">{label.UI_Button_Label_Submit}</button>
+</div>
+</template>
+</template>

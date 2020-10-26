@@ -1,0 +1,30 @@
+<!-- ======================================================== 
+    * @method name : manageInformation.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds form A & B data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	
+	<div class="manageInfo">
+		<template if:true={mainForm}>
+
+			<template if:false={templateFlag}>
+				<c-splash-screen utill-cmp-object={utillHelperObject} onnextpage={handleGetStarted}></c-splash-screen>
+            </template>
+
+<template if:true={templateFlag}>
+				<template if:true={storedData}>
+					<c-manage-information-template path-object={lstAccordions} utill-helper-object={utillHelperObject} str-current-section={section} is-rewrite-stage={isRewriteStage} lst-reentry-sections={lstReentrySections} strnext-section={nextSection}></c-manage-information-template>
+				</template>
+<template if:true={error}>Error While Wire Call.</template>
+</template>
+
+</template>
+
+<template if:false={mainForm}>
+			<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+        </template>
+
+</div>
+</template>

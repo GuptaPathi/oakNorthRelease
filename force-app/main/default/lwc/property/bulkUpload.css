@@ -1,0 +1,47 @@
+.primary-button:hover {
+    color: #000;
+}
+
+.primary-button {
+    background: #39AC7C;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 60px 0;
+    line-height: 0px;
+    padding: 0px;
+    display: block;
+    text-align: center;
+    margin: 53px auto 50px auto
+}
+
+.padding-left {
+    padding-left: 15px;
+}
+
+.heading {
+    font-size: 18px;
+    font-weight: 900;
+    margin: 0px 20px 32px 20px;
+}
+
+.padding-right {
+    padding-right: 15px;
+}
+
+.margin30 {
+    margin: 0px 30px;
+}
+
+@media (max-width: 480px) {
+    .margin30 {
+        margin: 0px 10px;
+    }
+    .primary-button {
+        width: 92%;
+    }
+}

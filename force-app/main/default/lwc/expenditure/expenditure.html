@@ -1,0 +1,57 @@
+<!-- ======================================================== 
+* @template name : expenditure.html 
+* @author : EY - Sai Kumar 
+* @purpose: This html file holds all expenditure records data.
+* @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<div class="slds-p-top_medium slds-p-laft_medium container">
+
+		<template if:true={expenditureDataFlag}>
+
+			<h1 class="heading">{label.UI_Text_Label_KnownExpenses}</h1>
+
+			<!-- START of Expenditure table-->
+			<template for:each={expenditureDetails} for:item="expenditureData" for:index="index">
+
+				<ul key={expenditureData.key} style="margin-bottom:10px ;" class="slds-wrap">
+					<div class="slds-wrap  detailBoxShade slds-grid greentile">
+						<span class="leftsec">
+							{expenditureData.key}
+						</span>
+						<span class="rightsec">
+							<span class="edit">
+
+								<lightning-input name={expenditureData.name} data-id={expenditureData.name}
+									value={expenditureData.value} class={expenditureData.name} type="number"
+									formatter="currency" onchange={handleChange} read-only=true place-holder="£ 0.00"
+									pattern="([0-9.£, ]*)$" onblur={handbleBlur} onclick={handleEdit}
+									message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits}>
+								</lightning-input>
+
+							</span>
+							<span class="monthly">
+								{label.UI_Text_Label_Monthly}
+							</span>
+						</span>
+
+						<div class="editicon">
+							<lightning-button-icon variant="bare" name={expenditureData.name} icon-name="utility:edit" onclick={handleEdit} data-index={index}></lightning-button-icon>
+						</div>
+
+					</div>
+				</ul>
+
+			</template>
+			<!-- END of Expenditure table-->
+
+		</template>
+
+		<div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center">
+			<button name="pi" onclick={handleNext} slot="footer" class="primary-button">
+				{label.UI_Button_Label_Next}
+			</button>
+		</div>
+
+	</div>
+</template>

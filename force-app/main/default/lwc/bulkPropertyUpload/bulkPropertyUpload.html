@@ -1,0 +1,46 @@
+<!-- ======================================================== 
+    * method name : bulkPropertyUpload.html 
+    * author : EY - Gupta 
+    * purpose: This html file for uploading bulk property data.
+    * created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<lightning-card>
+		<div class="main-container">
+			<h1 class="heading">{label.UI_Text_Label_PropertyPortBulkUp}</h1>
+			<h3>{label.UI_Text_Label_PropertyAddrListPortfolio}</h3>
+
+			<div>
+				<lightning-input type="file" onchange={handleFileChanges} accept=".xls,.pdf" variant="label-hidden}"
+					multiple required
+					message-when-value-missing={utillCmpObject.objErrorMessages.Bulk_upload_documents}>
+				</lightning-input>
+			</div>
+
+			<div if:true={filesUploaded} class="slds-text-body_small slds-text-color_error">
+				<template for:each={filesUploaded} for:item="eachItem" class="docList" for:index="index">
+					<ul key={eachItem.VersionData} class="docList">
+						<span>
+							<p class="title">{eachItem.Title}</p>
+							<button if:true={bolShowDelete} data-index={index} onclick={removeFile}
+								class="slds-icon_container slds-icon-utility-comments"
+								style="border:none;outline:none;background:none;">
+								<svg style="fill:#BCBBBA;height: 15px;" class="slds-icon slds-icon-text-default"
+									aria-hidden="true">
+									<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#delete"></use>
+								</svg>
+							</button>
+						</span>
+					</ul>
+				</template>
+
+				<template if:true={showLoadingSpinner}>
+					<lightning-spinner alternative-text="Uploading......" size="medium"></lightning-spinner>
+				</template>
+			</div>
+						
+			<button class="slds-m-top--medium greenbutton" onclick={handleSaveFiles}>{label.UI_Button_Label_Confirm_Upload}</button>
+			<button class="slds-m-top--medium greybutton slds-m-left--medium" onclick={handleCancel}>{label.UI_Button_Label_Cancel}</button>
+		</div>
+	</lightning-card>
+</template>

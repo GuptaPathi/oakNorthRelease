@@ -1,0 +1,66 @@
+<!-- ======================================================== 
+    * @template name : business.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all business records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+
+	<c-do-you-have-util radio-flag={doYouHaveFlag} onhandleselection={handleDoYouHaveClick} header-question={label.UI_Text_Label_DoYouOwnBusinessQue} description={label.UI_Text_Label_SignificantPartnership} yes-button-label="Yes, I do" no-button-label="No, I don't"></c-do-you-have-util>
+	
+	<template if:true={showBusinessFields}>
+
+        <!--START of Buiness fields-->
+		<template for:each={arrBusinessData} for:item="businessRec" for:index="index" class="slds-p-around_medium">
+			<ul key={businessRec.index} class="slds-p-around_medium slds-m-around_medium form-element main-container">
+				<div class="slds-grid slds-wrap">
+					<lightning-input data-index={index} name='Full_Legal_Trading_Name_Of_The_Business__c' label={label.UI_Input_Label_LegalBusinessName} value={businessRec.Full_Legal_Trading_Name_Of_The_Business__c} required pattern="([a-zA-Z0-9- ])*" message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_trading_name_of_the_business} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+					<lightning-input data-index={index} name='Company_Number__c' type="number" label={label.UI_Input_Label_ComNumber} value={businessRec.Company_Number__c} message-when-value-missing={utillCmpObject.objErrorMessages.Company_number} required pattern="([0-9,]*)$" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+				</div>
+
+				<div class="slds-grid slds-wrap">
+					<lightning-combobox data-index={index} name='Select_Country_Of_Establishment__c' class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" label={label.UI_Input_Label_EstCountry} options={arrCountry} value={businessRec.Select_Country_Of_Establishment__c} placeholder="Select country of establishment" message-when-value-missing={utillCmpObject.objErrorMessages.Country_of_establishment} required onchange={handleChange}></lightning-combobox>
+					<lightning-input data-index={index} name='Estimated_Value_Of_Business__c' type="number" formatter="currency" label={label.UI_Input_Label_EstBusinessValue} value={businessRec.Estimated_Value_Of_Business__c} message-when-value-missing={utillCmpObject.objErrorMessages.Estimated_value} required pattern="([0-9.£,]*)$" placeholder="£0.00" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+				</div>
+
+				<div class="slds-grid slds-wrap">
+					<lightning-input data-index={index} name='Business_Owning__c' type="number" label={label.UI_Input_Label_OwningPerQue} value={businessRec.Business_Owning__c} message-when-value-missing={utillCmpObject.objErrorMessages.How_much_do_you_own} required placeholder="0%" step = "0.01" pattern="([0-9.%,]*)$" max = "100" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+					<lightning-input data-index={index} name='Annual_Salary__c' type="number" formatter="currency" label={label.UI_Input_Label_AnnualSalary} value={businessRec.Annual_Salary__c} message-when-value-missing={utillCmpObject.objErrorMessages.Salary_received_annually} required pattern="([0-9.£,]*)$" placeholder="£0.00" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+				</div>
+
+				<div class="slds-grid slds-wrap">
+					<lightning-radio-group data-index={index} data-id={index} name={index} data-name="Dividends_Received__c" label={label.UI_Text_Label_DivDisQue} value={businessRec.Dividends_Received__c} required message-when-value-missing={utillCmpObject.objErrorMessages.Dividends_or_distributions} options={options} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-radio-group>
+					<template if:true={businessRec.radioFlag}>
+						<lightning-input data-index={index} name='Amount_Received_Annually__c' label={label.UI_Input_Label_AnnualReceivingsQue} value={businessRec.Amount_Received_Annually__c} required pattern="([0-9.£,]*)$" type="number" formatter="currency" message-when-value-missing={utillCmpObject.objErrorMessages.Receive_annually} placeholder="£0.00" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+					</template>
+				</div>
+			</ul>
+			<!--START of Buiness fields-->
+			
+			<!--Delete business record-->
+			<div class="buttonscontainer" key={businessRec.index} if:true={showDeleteIcon}>
+				<button class="addbutton" data-index={index} title="Remove Business" onclick={removeBusiness}>
+					<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+						<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+					</svg>
+				</button>
+			</div>
+		</template>
+
+		<!--Add another business records-->
+		<div class="buttonscontainer">
+			<button class="addbutton mobhide" onclick={addBusiness}>
+				<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+					<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+				</svg>
+			</button>
+		</div>
+		
+		<a onclick={addBusiness} class="mobileshow">{label.UI_Button_Label_AddAnotherBusiness}</a>
+
+		<div class="width100">
+			<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+		</div>
+	</template>
+	
+</template>

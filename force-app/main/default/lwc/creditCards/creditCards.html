@@ -1,0 +1,58 @@
+<!-- ======================================================== 
+    * @template name : creditCards.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all creditCards records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+
+	<c-do-you-have-util radio-flag={doYouHaveFlag} onhandleselection={handleDoYouHaveClick} header-question={label.UI_Text_Label_CreditCardsQue}></c-do-you-have-util>
+	
+	<template if:true={showCreditFields}>
+
+		<h1 class="heading">{label.UI_Text_Label_CreditCardsDetails}</h1>
+
+		<template if:true={arrCreditCardData}>
+
+            <!--Iterating over array of creditcards records-->
+			<template iterator:it={arrCreditCardData} class="slds-p-around_medium">
+				<ul key={it.value.index} class="slds-p-around_medium slds-m-around_medium form-element main-container">
+					<div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Lender_Name__c' label={label.UI_Input_Label_LenderName} value={it.value.Lender_Name__c} required message-when-value-missing={utillCmpObject.objErrorMessages.Name_of_the_lender} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+						<lightning-input data-index={it.index} name='Amount_Owing__c' label={label.UI_Input_Label_OwingAmount} value={it.value.Amount_Owing__c} required pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} type="number" formatter="currency" message-when-value-missing={utillCmpObject.objErrorMessages.Amount_owing} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+					</div>
+                    
+                    <div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Monthly_Repayments__c' label={label.UI_Input_Label_MonthlyRepayments} value={it.value.Monthly_Repayments__c} required type="number" formatter="currency" message-when-value-missing={utillCmpObject.objErrorMessages.Monthly_repayments} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+					</div>
+                </ul>
+                
+                <!--Delete creditcards records-->
+				<div class="buttonscontainer" key={it.value.index} if:true={showDeleteIcon}>
+					<button class="addbutton" data-index={it.index} title="Remove Credit Cards" onclick={removeRecord}>
+						<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+							<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+						</svg>
+					</button>
+				</div>
+            </template>
+            
+            <!--Adding creditcards records-->
+			<div class="buttonscontainer">
+				<button class="addbutton mobhide" onclick={addCredit}>
+					<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+						<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+					</svg>
+				</button>
+            </div>
+            
+            <!--Adding creditcards records for mobile-->
+				<a onclick={addCredit} class="mobileshow">{label.UI_Text_Label_AddAnother}</a>
+				
+			<div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center button">
+				<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+			</div>
+
+		</template>
+	</template>
+</template>

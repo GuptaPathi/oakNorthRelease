@@ -1,0 +1,61 @@
+<!-- ======================================================== 
+* @template name : contingentLiabilities.html 
+* @author : EY - Ranjith 
+* @purpose: This html file holds all contingentLiabilitiy records data.
+* @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+
+	<c-do-you-have-util radio-flag={doYouHaveFlag} onhandleselection={handleDoYouHaveClick} header-question={label.UI_Text_Label_ContingentQue}></c-do-you-have-util>
+	
+	<!--START of Contingent Liabilities-->
+	<template if:true={showContingentFields}>
+		<h1 class="heading">{label.UI_Text_Label_ContingentDetails}</h1>
+		<template if:true={arrContingentData}>
+
+			<!--Iterating over array of contingent records-->
+			<template iterator:it={arrContingentData} class="slds-p-around_medium">
+				<ul key={it.value.index} class="slds-p-around_medium slds-m-around_medium form-element main-container">
+					<div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Amount__c' label={label.UI_Input_Label_GuaranteeAmount} value={it.value.Amount__c} required pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} message-when-value-missing={utillCmpObject.objErrorMessages.Amount} placeholder="£0.00" type="number" formatter="currency" step="0.01" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+						<lightning-input data-index={it.index} name='To_Whom__c' label={label.UI_Input_Label_OrganisationName} value={it.value.To_Whom__c} required message-when-value-missing={utillCmpObject.objErrorMessages.To_whom} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+					</div>
+					
+					<div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Third_Party_Name__c' label={label.UI_Input_Label_3rdPartyName} value={it.value.Third_Party_Name__c} required class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+						<lightning-input data-index={it.index} name='Contingent_Liability_Time_Limit__c' label={label.UI_Input_Label_ContingentTimeLimit} value={it.value.Contingent_Liability_Time_Limit__c} required date-style="medium" type="date" message-when-bad-input="Please select date from calendar" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+					</div>
+					
+				</ul>
+				
+				<!--Delete contingent records-->
+				<div class="buttonscontainer" key={it.value.index} if:true={showDeleteIcon}>
+
+					<button class="addbutton" data-index={it.index} title="Remove Contingent Liablities" onclick={removeRecord}>
+						<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+							<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+						</svg>
+					</button>
+
+				</div>
+			</template>
+		</template>
+		
+		<!--Adding contingent records-->
+		<div class="buttonscontainer">
+			<button class="addbutton mobhide" onclick={addContingent}>
+				<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true ">
+					<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add "></use>
+				</svg>
+			</button>
+		</div>
+
+		<a onclick={addContingent} class="mobileshow ">{label.UI_Text_Label_AddAnother}</a>
+
+		<div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center button ">
+			<button name="pi " onclick={handleNext} slot="footer " class="primary-button ">{label.UI_Button_Label_Next}</button>
+		</div>
+
+	</template>
+	<!--END of Contingent Liabilities-->
+</template>

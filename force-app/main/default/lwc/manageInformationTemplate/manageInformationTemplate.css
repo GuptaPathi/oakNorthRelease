@@ -1,0 +1,358 @@
+/*.mainTitle{
+    border-radius: 25px;
+}*/
+
+.subTitle {
+    padding: 0px;
+}
+
+.open-icon {
+    margin-top: -39px;
+}
+
+a.mobilescreen {
+    display: block;
+    position: relative;
+    top: -250px;
+    visibility: hidden;
+}
+
+.currentTab {
+    background-color: #39ac7c;
+    color: white;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.Property {
+    margin-top: 20px;
+}
+
+.Loans {
+    margin-top: 20px;
+}
+
+.Salary {
+    margin-top: 20px;
+}
+
+.Expenditure {
+    margin-top: 20px;
+}
+
+.ExistingLiability {
+    margin-top: 20px;
+}
+
+.currentSubTab {
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.completedTab {
+    background-color: #EAEAEA;
+    border-radius: 4px;
+    color: #000;
+}
+
+.currentTab .individual {
+    fill: #39ac7c;
+    background: #fff;
+}
+
+.individual {
+    fill: #fff;
+    background: #999999;
+}
+
+.notstartedTab {
+    background-color: #eaeaea;
+    border-radius: 4px;
+}
+
+.slds-badge {
+    cursor: pointer;
+    color: white;
+}
+
+.Assets {
+    border-radius: 4px;
+}
+
+.Income {
+    border-radius: 4px;
+}
+
+.Expenditure {
+    border-radius: 4px;
+}
+
+.subsec {
+    background: #F5F5F5;
+    border-radius: 4px;
+    padding: 15px 25px;
+    cursor: pointer;
+    cursor: hand;
+    margin: 0px 0px 20px 0px;
+    border: 2px solid #E5E5E5;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.currentTab .subsec {
+    border: 1px solid #94DAB9;
+    background: #94DAB9;
+    border-radius: 4px;
+    margin: 0px;
+}
+
+
+/*.mainborder {     border: 2px solid #94D9B8;
+    border-radius: 4px; 
+}*/
+
+.Assets .currentSubTab {
+    background: #fff;
+    border-bottom-right-radius: 0px;
+    margin: 0px;
+    padding: 10px 26px;
+    color: #fff;
+    letter-spacing: 0.6px;
+}
+
+.ExistingLiability .subsec {
+    margin: 0px;
+}
+
+.nobackground {
+    background: none!important;
+}
+
+
+/*.slds-icon_container svg{
+    fill:green !important;
+    background:red;
+}
+@font-face {
+    font-family: 'RobotoLight';
+    src: url('/Roboto-light.ttf')format('truetype');
+    
+}
+@font-face {
+    font-family: 'RobotoLight';
+    src: url('RobotoLight')format('woff');
+    
+}
+div {
+    font-family: 'RobotoLight';
+    font-size: 16px;
+}*/
+
+.slds-icon_container {
+    width: 42px;
+    height: 42px;
+}
+
+.accordian_container {
+    padding: 30px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 16px #DDDDDD;
+}
+
+.manageInfo ul {
+    padding: 30px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 16px #DDDDDD;
+}
+
+.mainTitle {
+    padding: 9px;
+    font-size: 16px;
+    font-weight: 900;
+    cursor: hand;
+    cursor: pointer;
+}
+
+.open-icon {
+    float: right;
+    fill: #eaeaea;
+    width: 20px;
+    float: right;
+    line-height: 20px;
+    margin-top: -38px;
+    margin-right: 0px;
+}
+
+.edit-icon {
+    fill: #999;
+    background: none!important;
+    width: 20px;
+    float: right;
+    line-height: 20px;
+    margin-top: -38px;
+    margin-right: 0px;
+}
+
+.PersonalDetailsDone .edit-icon {
+    margin-top: -38px!important;
+}
+
+.AddressHistoryDone .edit-icon {
+    margin-top: -38px!important;
+}
+
+.TaxDetailsDone .edit-icon {
+    margin-top: -38px!important;
+}
+
+.AdditionalDetails .edit-icon {
+    margin-top: -38px!important;
+}
+
+.SupportingDocuments .edit-icon {
+    margin-top: -38px!important;
+}
+
+.Summary .edit-icon {
+    margin-top: -38px!important;
+}
+
+.success-icon {
+    background: #39ac7c;
+    fill: #fff;
+    box-shadow: rgb(221, 221, 221) 0px 4px 16px;
+    height: 44px;
+    width: 44px;
+    top: -47px;
+    position: relative;
+    right: -30px;
+}
+
+.title_acc {
+    font-size: 16px;
+    font-weight: 900;
+}
+
+.show {
+    border: 2px solid #39AC7C
+}
+
+.icon1 {
+    margin-top: -30px!important;
+}
+
+.completedTab .edit-icon {
+    width: 15px!important;
+    margin-top: -38px;
+    background: none!important;
+}
+
+.font-bold {
+    font-weight: 900;
+}
+
+.button_accor {
+    background: #39AC7C;
+}
+
+.readonly {
+    opacity: 0.1;
+}
+
+.canfill {
+    opacity: 1;
+}
+
+.ulist {
+    padding: 30px;
+    margin-bottom: 20px;
+    background: #fff;
+    box-shadow: 0px 4px 16px #DDDDDD;
+}
+
+@media (max-width: 480px) {
+    .manageInfo {
+        width: 100%;
+        margin: 30px auto!important;
+    }
+    .ulist {
+        padding: 5px 0px;
+    }
+    .individual {
+        fill: #fff;
+        background: #999;
+        width: 31px;
+        height: 31px;
+        padding: 3px;
+    }
+    .success-icon {
+        height: 34px;
+        width: 34px;
+        right: -4px;
+        top: -65px;
+    }
+    .completedTab {
+        border-radius: 0px;
+    }
+    .font-bold {
+        font-weight: 100;
+    }
+    .mainTitle {
+        padding: 11px 6px;
+    }
+    .subTitle {
+        border-radius: 0px;
+    }
+    .open-icon {
+        float: right;
+        fill: #eaeaea;
+        width: 20px;
+        float: right;
+        line-height: 20px;
+        margin-top: -31px;
+        margin-right: 0px;
+    }
+    .edit-icon {
+        fill: #999;
+        background: none!important;
+        width: 20px;
+        float: right;
+        line-height: 20px;
+        margin-top: -31px!important;
+        margin-right: 0px;
+    }
+    .PersonalDetailsDone .edit-icon {
+        margin-top: -31px!important;
+    }
+    .AddressHistoryDone .edit-icon {
+        margin-top: -31px!important;
+    }
+    .TaxDetailsDone .edit-icon {
+        margin-top: -31px!important;
+    }
+    .AdditionalDetails .edit-icon {
+        margin-top: -31px!important;
+    }
+    .SupportingDocuments .edit-icon {
+        margin-top: -31px!important;
+    }
+    .Summary .edit-icon {
+        margin-top: -31px!important;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .manageInfo {
+        width: 100%;
+        margin: 30px auto!important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .manageInfo {
+        width: 100%;
+        margin: 30px auto!important;
+    }
+}

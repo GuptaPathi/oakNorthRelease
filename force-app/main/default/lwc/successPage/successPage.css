@@ -1,0 +1,36 @@
+.success-icon {
+    background: #39ac7c;
+    fill: #fff;
+    width: 162px;
+    height: 162px;
+}
+
+.Donepage {
+    -webkit-box-shadow: 0 4px 16px 0 #ddd;
+    -moz-box-shadow: 0 4px 16px 0 #ddd;
+    box-shadow: 0 4px 16px 0 #ddd;
+    width: 76%;
+    margin: 60px auto;
+    padding: 50px;
+    background: #fff;
+    text-align: center;
+    color: #000;
+}
+
+.donetxt {
+    color: #000;
+    font-size: 44px;
+    font-weight: 100;
+    line-height: 100px;
+}
+
+.txt {
+    color: #000;
+    font-size: 18px;
+    line-height: 30px;
+    width: 70%;
+    margin: 0px auto;
+    text-align: center;
+    margin-bottom: 30px;
+    display: block;
+}

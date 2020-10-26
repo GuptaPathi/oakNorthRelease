@@ -1,0 +1,77 @@
+.manageInfo {
+                        width: 76%;
+                        margin: 60px auto;
+                    }
+                    
+                    .manageInfo ul {
+                        padding: 30px;
+                        margin-bottom: 20px;
+                        background: #fff;
+                        box-shadow: 0px 4px 16px #dddddd;
+                    }
+                    
+                    .accordian_container {
+                        padding: 30px;
+                        margin-bottom: 20px;
+                        background: #fff;
+                        box-shadow: 0px 4px 16px #dddddd;
+                    }
+                    
+                    .AssetsSubscreen ul {
+                        background: none;
+                    }
+                    
+                    @media (max-width: 480px) {
+                        .manageInfo {
+                            width: 100%;
+                            margin: 30px auto!important;
+                        }
+                        .ulist {
+                            padding: 5px 0px;
+                        }
+                        .individual {
+                            fill: #fff;
+                            background: #999;
+                            width: 31px;
+                            height: 31px;
+                            padding: 3px;
+                        }
+                        .edit-icon {
+                            margin-top: -23px;
+                            margin-right: 10px;
+                            width: 20px;
+                            height: 13px;
+                        }
+                        .success-icon {
+                            height: 34px;
+                            width: 34px;
+                            right: -4px;
+                            top: -65px;
+                        }
+                        .completedTab {
+                            border-radius: 0px;
+                        }
+                        .font-bold {
+                            font-weight: 100;
+                        }
+                        .mainTitle {
+                            padding: 11px 6px;
+                        }
+                        .subTitle {
+                            border-radius: 0px;
+                        }
+                    }
+                    
+                    @media (min-width: 481px) and (max-width: 767px) {
+                        .manageInfo {
+                            width: 100%;
+                            margin: 30px auto!important;
+                        }
+                    }
+                    
+                    @media (min-width: 768px) and (max-width: 1024px) {
+                        .manageInfo {
+                            width: 100%;
+                            margin: 30px auto!important;
+                        }
+                    }

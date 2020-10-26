@@ -1,0 +1,222 @@
+.detailBoxShade {
+    background-color: #F5F5F5;
+    border: none
+}
+
+.myLabel {
+    font-weight: bold;
+}
+
+.margintp20 {
+    margin-top: 20px
+}
+
+a {
+    color: #000;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.txt {
+    margin-bottom: 20px;
+    display: block;
+}
+
+.marginbtm10 {
+    margin-bottom: 10px
+}
+
+.margintp0 {
+    margin-top: 0px!important;
+}
+
+.margintp40 {
+    margin-top: 40px;
+}
+
+.headings_col {
+    display: block;
+    font-size: 16px;
+    font-weight: 900;
+    color: #000;
+    border-bottom: 2px solid #A3D6BE;
+    margin-bottom: 10px;
+    line-height: 39px;
+}
+
+.width100 {
+    width: 100%;
+    display: inline-block;
+    clear: both;
+    text-align: center;
+    margin: 30px auto 30px;
+    float: none;
+}
+
+.primary-button:hover {
+    color: #000;
+}
+
+.primary-button {
+    background: #39AC7C;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 20px 0;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.mobilehid {
+    display: block;
+}
+
+.mobileediticon {
+    display: none;
+}
+
+.paddingt30 {
+    padding-top: 30px;
+}
+
+.padding30 {
+    padding: 19px 30px
+}
+
+.content {
+    width: 85%;
+    float: left;
+    line-height: 20px;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.tickbox {
+    float: left;
+    width: 35px;
+    padding-top: 3px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.width1 {
+    width: 27.6%;
+    line-height: 31px;
+    float: left;
+}
+
+.tickicon {
+    float: left;
+}
+
+.heading {
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 30px;
+}
+
+.editicon {
+    text-align: right;
+    position: absolute;
+    right: 60px;
+    margin-top: 10px;
+}
+
+.link {
+    text-decoration: underline;
+    color: #000;
+}
+
+.link:hover {
+    text-decoration: none;
+    color: #000;
+}
+
+
+/*Mobile Media Query */
+
+
+/* Media Query for Mobile Devices */
+
+@media (max-width: 480px) {
+    .padding30 {
+        padding: 10px;
+    }
+    .slds-form-element__help {
+        position: absolute!important;
+        top: -17px!important;
+    }
+    .content {
+        width: 85%;
+        float: left;
+        line-height: 29px;
+        display: inline-block;
+    }
+    .editicon {
+        text-align: right;
+        position: absolute;
+        right: 30px;
+        margin-top: -42px;
+    }
+    .width1 {
+        width: 80%;
+        float: left;
+        line-height: 31px;
+    }
+    .lineheight {
+        line-height: 21px;
+    }
+    .mobilehid {
+        display: none;
+    }
+    .addressicon {
+        right: 20px;
+    }
+    .mobileediticon {
+        display: block;
+    }
+    /* common css */
+    .mobilemargin {
+        margin: 0 10px;
+    }
+    .primary-button {}
+    .width100 {
+        margin: 20px auto;
+    }
+}
+
+
+/* Media Query for low resolution  Tablets, Ipads */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .width1 {
+        width: 50%;
+    }
+    .width100 {
+        margin: 40px auto;
+    }
+    .content {
+        width: 85%;
+        float: left;
+        line-height: 20px;
+        display: inline-block;
+    }
+}
+
+
+/* Media Query for Tablets Ipads portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .width1 {
+        width: 50%;
+    }
+}

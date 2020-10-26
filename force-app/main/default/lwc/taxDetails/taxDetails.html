@@ -1,0 +1,52 @@
+<!-- ================================================================================== 
+    * @template name : taxDetail.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all Customer Citizenship Information records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+======================================================================================-->
+<template>
+	<lightning-card>
+		<div class="slds-m-around_medium form-element pi-top">
+			<p class="heading">{label.UI_Section_Label_TaxDetails}</p>
+			<template if:true={citizenshipList}>
+
+                <!-- START - Iterate over list of citizenship records -->
+				<template iterator:it={citizenshipList} class="slds-p-around_medium pi-top" style="padding-top: 0px;">
+					<ul key={it.value.index} class="slds-grid slds-p-top_small">
+						<div class="slds-grid slds-wrap slds-size--2-of-2 section">
+							<lightning-combobox data-index={it.index} name='Citizenship_Country__c' required class="aliasname padding10 slds-size--1-of-2 slds-p-left_xx-small" label={label.UI_Input_Label_Citizenship} options={lstCountry} value={it.value.Citizenship_Country__c} message-when-value-missing={utillCmpObject.objErrorMessages.Citizenship} onchange={handleChange}></lightning-combobox>
+							<div>
+								<button class="mobilehid alisbuttons addicon" if:false={citizenshipLimitFlag} onclick={addCitizenship}>
+									<svg class="slds-button__icon slds-button__icon_left" style="fill: #fff;" aria-hidden="true">
+										<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+									</svg>
+								</button>
+                            </div>
+                            
+							<div if:true={it.index} class="">
+								<button class="alisbuttons addicon" style="fill: #fff;" data-index={it.index} if:true={citizenshipRemoveFlag} title="Remove alias Namee" onclick={removeCitizenship}>
+									<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true" style="fill: #fff;margin:0px">
+										<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+									</svg>
+								</button>
+                            </div>
+                            
+                            <lightning-input data-index={it.index} name='Tax_Identification_Number__c' label={label.UI_Input_Label_TIN} value={it.value.Tax_Identification_Number__c} class="slds-size--1-of-2 slds-p-left_xx-small padding10 aliasname" onchange={handleChange} pattern="([a-zA-Z0-9]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_number_pattern}></lightning-input> 
+                            
+                              <!-- Add another citizenship list for mobile View-->
+                            <a class="mobileshow" if:false={citizenshipLimitFlag} onclick={addCitizenship}>
+                                {label.UI_Text_Label_AddAnother}
+                            </a>
+						</div>
+					</ul>
+                </template>
+                
+                <!--END - Iterate over list of citizenship records -->
+				<div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center">
+					<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+                </div>
+                
+			</template>
+		</div>
+	</lightning-card>
+</template>

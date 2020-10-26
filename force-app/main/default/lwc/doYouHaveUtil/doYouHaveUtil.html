@@ -1,0 +1,20 @@
+<!-- ======================================================== 
+    * @template name : doYouHaveUtil.html 
+    * @author : EY - Sai Kumar 
+    * @purpose: This html file holds all radio button records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<div class="slds-p-around_large padding0">
+		
+		<div if:true={headerQuestion}>
+			<h1>{headerQuestion}</h1>
+			<p>{description}</p>
+		</div>
+
+		<div class="slds-grid">
+			<lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name={headerQuestion} options={options} value={radioFlag} onchange={handleChange}></lightning-radio-group>
+		</div>
+
+	</div>
+</template>

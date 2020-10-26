@@ -1,0 +1,97 @@
+<template>
+   <div class="pi-top">
+    <!-- Tile component to show all Properties -->
+    <template if:true={showPropertyValueCard}>
+        <div class="slds-m-around_medium" style="padding: 0px 30px 0px 30px;margin: 0px;">
+            <c-tile-component  component-name={tileType} utill-cmp-object={utillCmpObject} calling-page="Property" edit-button-flag=false address-list={propertyRecordList}></c-tile-component>
+        </div>
+    </template>
+
+<!--Own Property information for current address start-->
+<div class="slds-grid slds-wrap" if:true={showCurrentAddressOnly}>
+    <lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name="Ownership_Confirmation__c" label="" options={options} value={doYouOwnProperty} type="radio" onchange={handleOwnProperty}
+        variant="label-hidden" message-when-value-missing={utillCmpObject.objErrorMessages.Other_names_aliases}>
+    </lightning-radio-group>
+</div>
+<!--Own Property information for current address end-->
+
+<!--Do you own selects NO-->
+<div class="slds-grid slds-wrap" if:true={dontYouOwnProperty}>
+    <lightning-input name="Monthly_Rent__c" label="How much is your monthly rent payment?" type="number" value={propertyRecordObj.Monthly_Rent__c} formatter="currency" step="0.01" required></lightning-input>
+</div>
+
+<!--Do you own selects Yes-->
+<div class="slds-grid slds-wrap" if:true={doYouOwnProperty}>
+    <lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Number_Of_Bedrooms__c' label="Number of bedrooms" type="number" value={propertyRecordObj.Number_Of_Bedrooms__c} onchange={handleChange}
+        required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name}>
+    </lightning-input>
+    <lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Size_sqf__c' label="Size(sqf)" type="number" formatter="currency" step="0.01" value={propertyRecordObj.Size__c} onchange={handleChange}
+        required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name}>
+    </lightning-input>
+</div>
+<div class="slds-grid slds-wrap" if:true={doYouOwnProperty}>
+    <lightning-combobox name="Property_Type__c" if:true={propertyPickList.data} label="Property type" placeholder="Property Type" options={propertyPickList.data.values} onchange={handleChange} value={propertyRecordObj.Property_Type__c} class="slds-size--1-of-1 slds-medium-size--1-of-2 padding-right slds-large-size--1-of-2 slds-p-left_xx-small"
+        message-when-value-missing={utillCmpObject.objErrorMessages.Country_of_birth} required>
+    </lightning-combobox>
+    <lightning-combobox name="Freehold_Leasehold__c" if:true={ownershipPickList.data} label="Freehold/Leasehold" placeholder="Freehold/Leasehold" options={ownershipPickList.data.values} onchange={handleChange} value={propertyRecordObj.Freehold_Leasehold__c}
+        class="slds-size--1-of-1 slds-medium-size--1-of-2 padding-right slds-large-size--1-of-2 slds-p-left_xx-small" message-when-value-missing={utillCmpObject.objErrorMessages.Country_of_birth} required>
+    </lightning-combobox>
+</div>
+<div class="slds-grid slds-wrap" if:true={doYouOwnProperty}>
+    <lightning-input if:true={showLeaseYears} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Lease_Left_Years__c' label="How many years left on the lease?" type="number" value={propertyRecordObj.Lease_Left_Years__c}
+        onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name}>
+    </lightning-input>
+</div>
+
+
+<!--prop value start-->
+<div class="slds-grid slds-wrap" if:true={showPropertyValueFields}>
+    <lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Estimated_Current_Value__c' label="What's the estimated current value?" type="number" formatter="currency" step="0.01"
+        value={propertyRecordObj.Estimated_Current_Value__c} onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name}>
+    </lightning-input>
+    <lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name="Outstanding_Mortgage_Check__c" label="Any outstanding mortagage?" options={options} value={propertyRecordObj.Outstanding_Mortgage_Check__c}
+        type="radio" onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Other_names_aliases}>
+    </lightning-radio-group>
+</div>
+<div class="slds-grid slds-wrap" if:true={showPropertyValueFields}>
+    <lightning-input if:true={propertyRecordObj.Outstanding_Mortgage_Check__c} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Outstanding_Balance__c' label="How much is outstanding?" type="number"
+        formatter="currency" step="0.01" value={propertyRecordObj.Outstanding_Balance__c} onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name}>
+    </lightning-input>
+    <lightning-input if:true={propertyRecordObj.Outstanding_Mortgage_Check__c} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Monthly_Payment__c' label="What's your monthly payment?" type="number"
+        formatter="currency" step="0.01" value={propertyRecordObj.Monthly_Payment__c} onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name}>
+    </lightning-input>
+</div>
+<!--Rent fields start-->
+<div class="slds-grid slds-wrap" if:true={showRentValueFields}>
+    <lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name="Dividends_Received__c" label="Do you earn any rental income from this property?" options={options}
+        value={propertyRecordObj.Dividends_Received__c} type="radio" onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Other_names_aliases}>
+    </lightning-radio-group>
+    <lightning-input if:true={propertyRecordObj.rent} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Annual_Earnings__c' label="How much do you earn?(Anually)" type="number" formatter="currency"
+        step="0.01" value={propertyRecordObj.Annual_Earnings__c} onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name}>
+    </lightning-input>
+</div>
+<button if:true={showPropertyButton} onclick={addProperty} class="addbutton mobhide"></button>
+<!-- Rent fields end-->
+<!--Add Another property start-->
+<template if:true={addPropertyFlag}>
+            <c-address-history utill-cmp-object={utillCmpObject} address-history-required="Add Property" hide-tile="true" oncancelproperty={handleCancelAddress} onaddproperty={handleAddedAddress}></c-address-history>
+        </template>
+<!-- Add Another property end-->
+<!--prop value end-->
+<div if:true={showPropertyValueFields}>
+    <button name="pi" onclick={addPropertyValue} class="slds-align_absolute-center slds-p-top_small primary-button">Next1</button>
+</div>
+<!-- Buttons Section -->
+<div>
+
+
+    <!-- <lightning-button label="Add Another Property" if:true={showPropertyButton} onclick={addProperty}></lightning-button> -->
+    <button name="pi" if:true={showNextButton} class="slds-align_absolute-center slds-p-top_small primary-button" onclick={handleNext}>Next</button>
+</div>
+
+<!-- Showing Spinner-->
+<template if:true={showSpinner}>
+        <lightning-spinner alternative-text="Loading" size="medium" variant="success"></lightning-spinner>
+    </template>
+</div>
+</template>

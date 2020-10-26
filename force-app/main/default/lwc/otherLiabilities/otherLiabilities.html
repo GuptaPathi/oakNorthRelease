@@ -1,0 +1,52 @@
+<!-- ======================================================== 
+    * @method name : otherLiability.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all otherLiability records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<c-do-you-have-util radio-flag={doYouHaveFlag} onhandleselection={handleDoYouHaveClick} header-question={label.UI_Text_Label_OtherContingentQue}></c-do-you-have-util>
+	<template if:true={showOtherLiabilityFields}>
+		<h1 class="heading1">{label.UI_Text_Label_OtherLiability}</h1>
+		<template if:true={lstOtherContingentData}>
+
+			<!-- START - Iterating over array of otherLiability records-->
+			<template iterator:it={lstOtherContingentData} class="slds-p-around_medium">
+				<ul key={it.value.index} class="slds-p-around_medium slds-m-around_medium form-element main-container">
+					<div class="slds-grid slds-wrap">
+						<lightning-textarea data-index={it.index} name='Details__c' label={label.UI_Input_Label_Details} required message-when-value-missing={utillCmpObject.objErrorMessages.Other_Liability_Details} value={it.value.Details__c} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-textarea>
+						<lightning-input data-index={it.index} name='Amount_Currently_Owing__c' label={label.UI_Input_Label_OwingCurrentAmount} value={it.value.Amount_Currently_Owing__c} required pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} message-when-value-missing={utillCmpObject.objErrorMessages.How_much_is_currently_owing} placeholder="£0.00" type="number" formatter="currency" step="0.01" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+                    </div>
+                    
+					<div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Monthly_Repayments__c' label={label.UI_Input_Label_MonthlyRepaymentsLia} value={it.value.Monthly_Repayments__c} required message-when-value-missing={utillCmpObject.objErrorMessages.Monthly_repayments} placeholder="£0.00" type="number" formatter="currency" step="0.01" pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+                    </div>
+                    
+				</ul>
+				<div class="buttonscontainer" key={it.value.index} if:true={showDeleteIcon}>
+					<button class="addbutton" data-index={it.index} title="Remove Business" onclick={removeOtherLiabilityRecord}>
+						<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+							<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+						</svg>
+					</button>
+				</div>
+            </template>
+            <!-- END - Iterating over array of otherLiability records-->
+
+        </template>
+        
+        <!--Adding Other Liabilities records for mobile-->
+		<div class="buttonscontainer">
+			<button class="addbutton mobhide" onclick={addOtherLiability} title="Add other Liability">
+				<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+					<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+				</svg>
+			</button>
+        </div>
+        
+        <a onclick={addOtherLiability} class="mobileshow">{label.UI_Text_Label_AddAnother}</a>
+		<div class="width100">
+			<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+		</div>
+	</template>
+</template>

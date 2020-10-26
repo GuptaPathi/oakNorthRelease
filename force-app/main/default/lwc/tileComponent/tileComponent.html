@@ -1,0 +1,54 @@
+<!-- ======================================================== 
+    * @method name : tileComponent.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds all previous address records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<template if:true={addressList}>
+		<template for:each={addressList} for:item="eachAddress" for:index="index">
+			<div key={eachAddress.durationTxts} class="durationCls">{eachAddress.dateDiffTexts}<span class="textgrey">{eachAddress.durationTxts}</span> 
+			</div>
+			<div key={eachAddress.address} class="addressbox">
+				<div class="slds-box slds-box_xx-small slds-grid slds-p-top_x-small address-box">
+
+					<div class="slds-size_4-of-5 slds-p-top_x-small date" style="padding: 10px 30px">
+						<div if:false={eachAddress.bulkPropertyFlag}>
+							<p key={eachAddress.Building_House_Name__c} if:false={eachAddress.Building_House_Name__c}>{eachAddress.Property_Type__c}</p>
+							<p key={eachAddress.Building_House_Name__c} if:true={eachAddress.Flat__c}>{eachAddress.Flat__c},</p>
+							<p key={eachAddress.Building_House_Name__c} if:true={eachAddress.Building_House_Name__c}>{eachAddress.Building_House_Name__c},</p>
+							<p key={eachAddress.Building_House_Name__c} if:true={eachAddress.Building_House_Number__c}>{eachAddress.Building_House_Number__c},</p>
+							<p key={eachAddress.Street__c} if:true={eachAddress.Street__c}>{eachAddress.Street__c},</p>
+							<p key={eachAddress.Town_City__c} if:true={eachAddress.Town_City__c}>{eachAddress.Town_City__c}</p>
+							<p key={eachAddress.PostCode__c} if:true={eachAddress.PostCode__c}>{eachAddress.PostCode__c},</p>
+							<p key={eachAddress.Country__c} if:true={eachAddress.Country__c}>{eachAddress.Country__c}</p>
+						</div>
+
+						<div if:true={eachAddress.bulkPropertyFlag}>
+							<p key={eachAddress.Building_House_Name__c}>{eachAddress.Property_Type__c}</p>
+						</div>
+
+					</div>
+					<div class="slds-size_1-of-5 slds-p-left_x-small slds-p-top_x-small slds-p-bottom_x-small" style="display: flex;align-items: center;">
+						<div class="editicon">
+							<lightning-button-icon name="editrecord" data-index={index} variant="bare" icon-name="utility:edit" onclick={handleEdit}></lightning-button-icon> <span if:false={eachAddress.Current__c}>
+								<lightning-button-icon name="deleterecord" if:true={deleteButtonFlag} data-index={index} variant="bare" icon-name="utility:delete" onclick={handleEdit} class="slds-p-left_xx-small"></lightning-button-icon>
+							</span>
+						</div>
+					</div>
+
+				</div>
+				<template if:true={showPropertyValue}>
+					<div class="slds-grid addresscontent"> <span>Value&nbsp;:&nbsp; </span>  <span>{eachAddress.Estimated_Current_Value__c}</span> 
+					</div>
+					<div class="slds-grid addresscontent" if:true={eachAddress.Outstanding_Balance__c}> <span>{label.UI_Text_Label_RemainMort} &nbsp;:&nbsp; </span>  <span>{eachAddress.Outstanding_Balance__c}</span> 
+					</div>
+					<div class="slds-grid addresscontent marginbtm10" if:true={eachAddress.Monthly_Payment__c}> <span>{label.UI_Text_Label_MonPayment} &nbsp;:&nbsp; </span>  <span>{eachAddress.Monthly_Payment__c}</span> 
+					</div>
+				</template>
+
+			</div>
+
+		</template>
+	</template>
+</template>

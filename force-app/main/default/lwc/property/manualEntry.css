@@ -1,0 +1,264 @@
+.paddingsection {
+    padding: 0px 0px 0px 30px
+}
+
+.padding-left_1 {
+    padding-left: 30px;
+}
+
+.primary-button:hover {
+    color: #000;
+}
+
+.primary-button {
+    background: #39AC7C;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 60px 0;
+    line-height: 0px;
+    padding: 0px;
+    display: block;
+    text-align: center;
+    margin: 53px auto 50px auto
+}
+
+.listingaddress {
+    margin: 0px 30px
+}
+
+.margintp20 {
+    margin-top: 20px;
+}
+
+.heading {
+    font-size: 18px;
+    font-weight: 900;
+    margin: 0px 30px 0px 20px
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: 900;
+    margin: 0px 30px 0px 20px
+}
+
+.addbutton {
+    border: none;
+    background: #9cd6be;
+    border-radius: 4px;
+    width: 43px;
+    height: 43px;
+    -webkit-transition: all .5s ease;
+    outline: none;
+    float: right;
+}
+
+.addbutton:hover {
+    background: #39ac7c;
+    outline: none;
+}
+
+.addbutton svg {
+    fill: rgb(255, 255, 255);
+    padding: 0px;
+    margin: 0px;
+    width: 23px;
+    height: 23px;
+}
+
+.showmobile {
+    display: none
+}
+
+.text {
+    padding-left: 0px;
+    margin-left: 0px;
+    line-height: 50px;
+    display: block;
+    font-weight: bold;
+    text-align: left;
+}
+
+.bulkbutton {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid #9F9F9F;
+    border-radius: 4px;
+    background: #9F9F9F;
+    -webkit-transition: all .5s ease;
+}
+
+.block {
+    height: 45px;
+    margin: 10px 30px;
+}
+
+.margin30 {
+    margin: 0px 30px;
+}
+
+.bulkbutton:hover {
+    border: 1px solid #9F9F9F;
+    border-radius: 4px;
+    color: #000;
+    background: #fff;
+}
+
+.mobileshow {
+    display: none;
+}
+
+.width100 {
+    width: 100%;
+    display: block;
+    margin: 60px 0px;
+}
+
+.padding-left {
+    padding-left: 15px;
+}
+
+.padding-right {
+    padding-right: 15px;
+}
+
+.marginbtm20 {
+    margin-bottom: 20px;
+}
+
+.content {
+    display: block;
+    margin: 0px 30px;
+}
+
+
+/* Media Query for Mobile Devices */
+
+@media (max-width: 480px) {
+    .mobileshow {
+        display: block;
+        color: #000;
+        text-decoration: underline;
+        display: block;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .padding-left_1 {
+        padding-left: 16px;
+        padding-right: 16px!important;
+    }
+    .margin30 {
+        margin: 0px 10px;
+    }
+    .content {
+        display: block;
+        margin: 0px 10px;
+    }
+    .block {
+        height: 45px;
+        margin: 10px 20px;
+    }
+    .showmobile {
+        display: block;
+        text-align: center;
+        color: #000;
+        text-align: center;
+        width: 100%;
+        margin: 0px auto;
+        text-decoration: underline;
+    }
+    .listingaddress {
+        margin: 0 20px;
+    }
+    .text {
+        padding-left: 0;
+        margin-left: 0;
+        line-height: 50px;
+        display: block;
+        font-weight: 700;
+        width: 100%;
+        text-align: left;
+    }
+    .width100 {
+        width: 100%;
+        display: block;
+        margin: 30px 0px;
+    }
+    .padding-left {
+        padding-left: 0px;
+    }
+    .mobhide {
+        display: none;
+    }
+    .padding-right {
+        padding-right: 05px;
+    }
+    .main-container {
+        padding: 10px 10px 30px 10px;
+        margin: 0px 0px 10px 0px;
+    }
+    .primary-button {
+        width: 92%;
+    }
+}
+
+
+/* Media Query for low resolution  Tablets, Ipads */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .mobileshow {
+        display: block;
+        color: #000;
+        text-decoration: underline;
+        display: block;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .primary-button {
+        margin: 30px 0px;
+        width: 92%;
+    }
+    .mobhide {
+        display: none;
+    }
+    .padding-left {
+        padding-left: 10px;
+    }
+    .padding-right {
+        padding-right: 10px;
+    }
+    .main-container {
+        padding: 10px 20px;
+        margin: 20px 0px;
+    }
+}
+
+
+/* Media Query for Tablets Ipads portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .main-container {
+        margin: 10px 0px 10px 0px;
+        padding: 10px
+    }
+    .mobileshow {
+        display: none;
+    }
+    .primary-button {
+        margin: 0px 0px
+    }
+    .padding-left {
+        padding-left: 10px;
+    }
+    .padding-right {
+        padding-right: 10px;
+    }
+}

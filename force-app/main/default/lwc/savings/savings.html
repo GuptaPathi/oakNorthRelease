@@ -1,0 +1,119 @@
+<!-- ======================================================== 
+    * @method name : saving.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds all saving records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<c-do-you-have-util radio-flag={doYouHaveFlag} onhandleselection={handleDoYouHaveClick} header-question={label.UI_Text_Label_CashSavingsQue} yes-button-label="Yes, I do" no-button-label="No, I don't"></c-do-you-have-util>
+	<template if:true={showSavingsFields}>
+		<h1 class="heading1">{label.UI_Text_Label_CashSavings}</h1>
+		<template if:true={lstSavingsData} class="slds-p-around_medium focus">
+
+			<!-- START - Iterate over list of saving records -->
+			<template iterator:it={lstSavingsData} class="">
+				<ul key={it.value.index} class="slds-p-around_medium slds-m-around_medium form-element main-container">
+					<div class={it.value.index}></div>
+					<div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Estimated_Value_Of_Savings__c' label={label.UI_Input_Label_EstSavingsValue} value={it.value.Estimated_Value_Of_Savings__c} required pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} message-when-value-missing={utillCmpObject.objErrorMessages.Estimated_value_of_savings} type="number" formatter="currency" step="0.01" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-input>
+                    </div>
+                    
+					<div class="section">
+						<h2 class="header">{label.UI_Text_Label_SavingsGenerationsQue}</h2>
+						<div if:true={it.value.bolSavingError}>
+							<h3 style="color:red" class="slds-p-top_small">{strAtleastOneSavingError}</h3>
+                        </div>
+                        
+						<div class="savingsec">
+							<lightning-input data-index={it.index} type="checkbox" checked={it.value.checkGroup.Business_Trade_Details__c} label={label.UI_Input_Label_BusinessTrade} name="Business_Trade_Details__c" value={it.value.checkGroup.Business_Trade_Details__c} onchange={handleClick} style="color: blue;"></lightning-input>
+							<template if:true={it.value.checkGroup.Business_Trade_Details__c}>
+								<lightning-textarea required data-index={it.index} name='Business_Trade_Details__c' label={label.UI_Input_Label_BusinessTradeDetails} value={it.value.Business_Trade_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2 savingstextarea  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+							</template>
+						</div>
+                    </div>
+                    
+					<div class="savingsec">
+						<lightning-input type="checkbox" data-index={it.index} checked={it.value.checkGroup.Inheritance_Details__c} label={label.UI_Input_Label_Inheritance} name="Inheritance_Details__c" value={it.value.checkGroup.Inheritance_Details__c} onchange={handleClick}></lightning-input>
+						<template if:true={it.value.checkGroup.Inheritance_Details__c}>
+							<lightning-textarea required data-index={it.index} name='Inheritance_Details__c' label={label.UI_Input_Label_InheritanceDetails} value={it.value.Inheritance_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+						</template>
+                    </div>
+                    
+					<div class="savingsec">
+						<lightning-input type="checkbox" data-index={it.index} checked={it.value.checkGroup.Property_Sales_Details__c} label={label.UI_Input_Label_PropertySafe} name="Property_Sales_Details__c" value={it.value.checkGroup.Property_Sales_Details__c} onchange={handleClick}></lightning-input>
+						<template if:true={it.value.checkGroup.Property_Sales_Details__c}>
+							<lightning-textarea required data-index={it.index} name='Property_Sales_Details__c' label={label.UI_Input_Label_PropSafeDetails} value={it.value.Property_Sales_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+						</template>
+                    </div>
+                    
+					<div class="savingsec">
+						<lightning-input type="checkbox" data-index={it.index} label={label.UI_Input_Label_CompBusinessSale} checked={it.value.checkGroup.Company_Business_Sales_Details__c} name="Company_Business_Sales_Details__c" value={it.value.checkGroup.Company_Business_Sales_Details__c} onchange={handleClick}></lightning-input>
+						<template if:true={it.value.checkGroup.Company_Business_Sales_Details__c}>
+							<lightning-textarea required data-index={it.index} name='Company_Business_Sales_Details__c' label={label.UI_Input_Label_CompBusinessSaleDetails} value={it.value.Company_Business_Sales_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+						</template>
+                    </div>
+                    
+					<div class="savingsec">
+						<lightning-input type="checkbox" data-index={it.index} checked={it.value.checkGroup.Maturity_Life_Policies_Details__c} label={label.UI_Input_Label_Lifepolicies} name="Maturity_Life_Policies_Details__c" value={it.value.checkGroup.Maturity_Life_Policies_Details__c} onchange={handleClick}></lightning-input>
+						<template if:true={it.value.checkGroup.Maturity_Life_Policies_Details__c}>
+							<lightning-textarea required data-index={it.index} name='Maturity_Life_Policies_Details__c' label={label.UI_Input_Label_LifePoliciesDetails} value={it.value.Maturity_Life_Policies_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+						</template>
+                    </div>
+                    
+					<div class="savingsec">
+						<lightning-input type="checkbox" data-index={it.index} checked={it.value.checkGroup.Gift_Details__c} label={label.UI_Input_Label_Gift} name="Gift_Details__c" value={it.value.checkGroup.Gift_Details__c} onchange={handleClick}></lightning-input>
+						<template if:true={it.value.checkGroup.Gift_Details__c}>
+							<lightning-textarea required data-index={it.index} name='Gift_Details__c' label={label.UI_Input_Label_GiftDetails} value={it.value.Gift_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+						</template>
+                    </div>
+                    
+					<div class="savingsec">
+						<lightning-input type="checkbox" data-index={it.index} checked={it.value.checkGroup.Sale_Of_Share_Details__c} label={label.UI_Input_Label_SaleOfShare} name="Sale_Of_Share_Details__c" value={it.value.checkGroup.Sale_Of_Share_Details__c} onchange={handleClick}></lightning-input>
+						<template if:true={it.value.checkGroup.Sale_Of_Share_Details__c}>
+							<lightning-textarea required data-index={it.index} name='Sale_Of_Share_Details__c' label={label.UI_Input_Label_SaleOfShareDetails} value={it.value.Sale_Of_Share_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+						</template>
+                    </div>
+                    
+					<div class="savingsec">
+						<lightning-input type="checkbox" data-index={it.index} checked={it.value.checkGroup.Employment_Income_Details__c} label={label.UI_Input_Label_EmplIncome} name="Employment_Income_Details__c" value={it.value.checkGroup.Employment_Income_Details__c} onchange={handleClick}></lightning-input>
+						<template if:true={it.value.checkGroup.Employment_Income_Details__c}>
+							<lightning-textarea required data-index={it.index} name='Employment_Income_Details__c' label={label.UI_Input_Label_EmplIncomeDetails} value={it.value.Employment_Income_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+						</template>
+                    </div>
+                    
+					<div class="savingsec">
+						<lightning-input type="checkbox" data-index={it.index} checked={it.value.checkGroup.Other_Details__c} label={label.UI_Input_Label_Other} name="Other_Details__c" value={it.value.checkGroup.Other_Details__c} onchange={handleClick}></lightning-input>
+						<template if:true={it.value.checkGroup.Other_Details__c}>
+							<lightning-textarea required data-index={it.index} name='Other_Details__c' label={label.UI_Input_Label_OtherDetails} value={it.value.Other_Details__c} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+						</template>
+					</div>
+                </ul>
+                
+				<!--Creating Delete icon for Savings Icon-->
+				<div class="buttonscontainer" key={it.value.index} if:true={showDeleteIcon}>
+					<button class="addbutton" data-index={it.index} title="Remove Record" onclick={removeRecord}>
+						<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+							<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+						</svg>
+					</button>
+				</div>
+            </template>
+            <!-- END - Iterate over list of savings records-->
+
+			<!--Add another saving records for mobile-->
+			<div class="buttonscontainer">
+				<button class="addbutton mobhide" onclick={addSavings} title="Add Another Savings">
+					<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+						<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+					</svg>
+				</button>
+            </div>
+            
+            <a onclick={addSavings} class="mobileshow">{label.UI_Text_Label_AddAnother}</a>
+			<div class="width100">
+				<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+            </div>
+            
+		</template>
+	</template>
+</template>

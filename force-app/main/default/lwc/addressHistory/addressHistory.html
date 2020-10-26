@@ -1,0 +1,264 @@
+<!-- ================================================================================== 
+    * @template name : addressHistory.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all Customer Address History records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+======================================================================================-->
+<template>
+    <lightning-card>
+
+        <template if:true={showAddressDetails} class="padding30">
+
+            <div class="slds-p-horizontal_small slds-var-p-*_xx-large containerP">
+                <span>
+                    <h2 class="address"><b>{addressHistoryRequired}</b></h2>
+                </span>
+            </div>
+
+            <template if:false={hideTile}>
+                <template if:true={addressRecordList}>
+                    <div class="slds-m-around_medium mobile padding16">
+
+                        <c-tile-component utill-cmp-object={utillCmpObject} calling-page="AddressHistory"
+                            oneditrecord={tileEditHandle} edit-button-flag="true" delete-button-flag=true
+                            ondeleterecord={handleDeleteProperty} address-list={addressRecordList}>
+                        </c-tile-component>
+
+                    </div>
+                </template>
+            </template>
+            <span if:false={hideTile}>
+                <h2 class="heading16">
+                    <b>{addressQuestion}</b>
+                </h2>
+            </span>
+            <div class="slds-grid slds-grid_vertical-align-end postcodeinput slds-wrap" if:false={showNextButton}>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_5-of-12 slds-p-right_xx-small">
+
+                    <lightning-input label={label.UI_Input_Label_PostCode} name="PostCode__c"
+                        message-when-value-missing={utillCmpObject.objErrorMessages.Post_code_error}
+                        class="postcodelookup" pattern="([a-zA-Z0-9 ]*)$" value={addressRecordObj.PostCode__c}
+                        message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_number_pattern}>
+                    </lightning-input>
+
+                    <div if:true={boolAddressNotFound}>
+                        <p style="color:red">{label.UI_Text_Label_AddrError}</p>
+                    </div>
+
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-12 slds-large-size_3-of-12">
+                    <button name="lookup" class="lookupbtn " onclick={showAddressPage}>
+                        {label.UI_Button_Label_LookupAddr}
+                    </button>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-12 slds-large-size_1-of-12 or">
+                    <span>OR</span>
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-12 slds-large-size_3-of-12 centeralignment">
+                    <a name="manual" class="enteraddress"
+                        onclick={showAddressPage}>{label.UI_Button_Label_AddAddrManual}</a>
+                </div>
+
+            </div>
+        </template>
+
+        <!-- START of Manual Address Fields-->
+        <div class="slds-m-around_medium mobile padding16" if:true={showAddressFields}>
+            <span class="slds-p-top_small text18">
+                <b>{manualHeader}</b>
+            </span>
+
+            <div class="slds-grid slds-wrap">
+                <lightning-input name='Flat__c' label={label.UI_Input_Label_Flat}
+                    message-when-value-missing={utillCmpObject.objErrorMessages.Flat_error}
+                    value={addressRecordObj.Flat__c} required onchange={handleChange}
+                    class="mobile slds-size--1-of-1 slds-medium-size--1-of-2 padding-right  slds-large-size--1-of-2 slds-p-left_xx-small">
+                </lightning-input>
+                <lightning-input name='Building_House_Name__c' label={label.UI_Input_Label_BuildingName}
+                    message-when-value-missing={utillCmpObject.objErrorMessages.House_building_name}
+                    value={addressRecordObj.Building_House_Name__c} required onchange={handleChange}
+                    pattern="([a-zA-Z0-9 ]*)$"
+                    message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_number_pattern}
+                    class="mobile slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left">
+                </lightning-input>
+                <lightning-input name='Building_House_Number__c' label={label.UI_Input_Label_BuildingNumber}
+                    message-when-value-missing={utillCmpObject.objErrorMessages.House_building_number}
+                    value={addressRecordObj.Building_House_Number__c} required pattern="([a-zA-Z0-9 ]*)$"
+                    message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_number_pattern}
+                    onchange={handleChange}
+                    class="mobile slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right">
+                </lightning-input>
+                <lightning-input value={addressRecordObj.Street__c} name='Street__c' label={label.UI_Input_Label_Street}
+                    required message-when-value-missing={utillCmpObject.objErrorMessages.Address_street}
+                    pattern="([a-zA-Z0-9 ]*)$"
+                    message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_number_pattern} class="mobile slds-size--1-of-1 slds-medium-size--1-of-2
+            slds-large-size--1-of-2 slds-p-left_xx-small padding-left " onchange={handleChange}></lightning-input>
+            </div>
+            <div class="slds-grid slds-wrap ">
+                <lightning-input value={addressRecordObj.Town_City__c} name='Town_City__c'
+                    label={label.UI_Input_Label_City} required
+                    message-when-value-missing={utillCmpObject.objErrorMessages.Address_town} pattern="([a-zA-Z ]*)$"
+                    message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_only_pattern} class="mobile slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2
+            slds-p-left_xx-small padding-right " onchange={handleChange}></lightning-input>
+                <lightning-input value={addressRecordObj.PostCode__c} name='PostCode__c'
+                    label={label.UI_Input_Label_PostCode} required
+                    message-when-value-missing={utillCmpObject.objErrorMessages.Address_postcode}
+                    pattern="([a-zA-Z0-9 ]*)$"
+                    message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Text_number_pattern}
+                    class="mobile slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 padding-left slds-p-left_xx-small "
+                    onchange={handleChange}></lightning-input>
+            </div>
+            <div class="slds-grid slds-wrap ">
+                <lightning-combobox name="Country__c" label={label.UI_Input_Label_Country} placeholder="Select Country "
+                    options={lstCountry} onchange={handleChange} value={addressRecordObj.Country__c} class="mobile slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 paddingrght
+            slds-p-left_xx-small padding-right"></lightning-combobox>
+            </div>
+            <div class="line"></div>
+            <template if:false={hideTile}>
+                <div if:true={tillDateFlag}>
+                    <span class="slds-p-top_small heading3 margintp"><b>{label.UI_Text_Label_MoveinMoveoutQues}</b>
+                    </span>
+                </div>
+                <div if:false={tillDateFlag}>
+                    <span class="slds-p-top_small heading3 margintp"><b>{label.UI_Text_Label_MoveInQue}</b>
+                    </span>
+                </div>
+                <div class="slds-grid slds-wrap  custom-container">
+                    <lightning-input data-id="moveInDate " type="date " value={addressRecordObj.At_Address_Since__c}
+                        name="At_Address_Since__c" label={label.UI_Input_Label_MoveIn} required
+                        message-when-value-missing={label.MoveindateLabel}
+                        class="mobile slds-size_1-of-2 slds-max-small-size_1-of-1 manualSinceDate padding-right"
+                        onchange={handleChange}>
+                    </lightning-input>
+                    <lightning-input type="date " data-id="moveOutDate "
+                        value={addressRecordObj.At_Address_Till_Date__c} name="At_Address_Till_Date__c"
+                        label={label.UI_Input_Label_MoveOut} required
+                        message-when-value-missing={label.MoveoutdateLabel} if:true={tillDateFlag}
+                        class="mobile slds-size_1-of-2 slds-max-small-size_1-of-1 manualTillDate padding-left "
+                        onchange={handleChange}>
+                    </lightning-input>
+                </div>
+            </template>
+            <template if:false={hideTile}>
+                <div class="width100">
+                    <div class=" mobilenone">
+                        <button name="cancel" class="skip" if:true={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Cancel}</button>
+                    </div>
+                    <div class="button2 blockelement1">
+                        <button name="manual" class="primary-button button1" if:true={hideOnEdit}
+                            onclick={addPreviousAddress}>{label.UI_Button_Label_AddAddr}</button>
+                        <button name="update" class="primary-button button1" if:false={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Update}</button>
+                    </div>
+                    <div class="displayonmobile">
+                        <button name="cancel" class="skip" if:true={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Cancel}</button>
+                    </div>
+                </div>
+            </template>
+
+
+            <!--For property Component start-->
+            <template if:true={hideTile}>
+                <div class="width100">
+
+                    <div class=" mobilenone">
+                        <button name="cancel" class="skip" if:true={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Cancel}</button>
+                    </div>
+                    <div class="button2 blockele">
+                        <button name="manual " class="primary-button" if:true={hideOnEdit}
+                            onclick={addPreviousAddress}>{label.UI_Text_Label_AddProp}</button>
+                        <button name="update" class="primary-button" if:false={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Update}</button>
+
+                    </div>
+                    <div class="displayonmobile">
+                        <a name="cancel" class="skipm" if:true={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Cancel}</a>
+                    </div>
+                </div>
+            </template>
+
+        </div>
+        <!-- Manual Address fields end-->
+
+        <!--Lookup Address fields start-->
+        <div class="slds-m-around_medium mobile paddinglookup" if:true={showLookupAddressFields}>
+
+            <lightning-combobox class="widthmobile" name='chooseAnAddress' label={label.UI_Text_Label_ChooseAddr}
+                required placeholder="Please select an address" value={addressRecordObj.Search_Address__c}
+                message-when-value-missing={utillCmpObject.objErrorMessages.Choose_Address} options={lstPostcodes}
+                onchange={handleChange}>
+            </lightning-combobox>
+
+            <template if:false={hideTile}>
+                <div if:true={tillDateFlag}>
+                    <span class="slds-p-top_small heading3 margintp"><b>{label.UI_Text_Label_MoveinMoveoutQues}</b>
+                    </span>
+                </div>
+                <div if:false={tillDateFlag}>
+                    <span class="slds-p-top_small heading3 margintp"><b>{label.UI_Text_Label_MoveInQue}</b>
+                    </span>
+                </div>
+                <div class="slds-grid slds-wrap  custom-container">
+                    <lightning-input type="date" name="At_Address_Since__c" required
+                        message-when-value-missing={label.MoveindateLabel} value={addressRecordObj.At_Address_Since__c}
+                        class="mobile slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 padding-right slds-p-left_xx-small slds-form-element lookUpSinceDate "
+                        label={label.UI_Input_Label_MoveIn} onchange={handleChange} data-id="moveInDate2"
+                        max={todayDate} message-when-range-overflow={label.UI_Input_Label_MoveInDateError}>
+                    </lightning-input>
+                    <lightning-input type="date" name="At_Address_Till_Date__c" required
+                        message-when-value-missing={label.MoveoutdateLabel} value={addressRecordObj.At_Address_Till_Date__c}
+                        class="mobile slds-size--1-of-1 padding-left slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small slds-form-element lookUpTillDate "
+                        label={label.UI_Input_Label_MoveOut} onchange={handleChange} if:true={tillDateFlag}
+                        data-id="moveOutDate2" max={todayDate}
+                        message-when-range-overflow={label.UI_Input_Label_MoveOutDateError} onblur={handleMoveOutBlur}>
+                    </lightning-input>
+                </div>
+            </template>
+
+            <!--For property Component start-->
+            <template if:true={hideTile}>
+                <div class="width100">
+
+                    <div class=" mobilenone">
+                        <button name="cancel" class="skip" if:true={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Cancel}</button>
+                    </div>
+                    <div class="button2 blockele">
+                        <button name="manual " class="primary-button" if:true={hideOnEdit}
+                            onclick={addPreviousAddress}>{label.UI_Text_Label_AddProp}</button>
+                        <button name="update" class="primary-button" if:false={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Update}</button>
+                    </div>
+                    <div class="displayonmobile">
+                        <a name="cancel" class="skipm" if:true={hideOnEdit}
+                            onclick={handleCancel}>{label.UI_Button_Label_Cancel}</a>
+                    </div>
+                </div>
+            </template>
+            <!--For property component end-->
+            <template if:false={hideTile}>
+                <button name="lookup" class="primary-button"
+                    onclick={addPreviousAddress}>{label.UI_Button_Label_AddPrvAddr}</button>
+            </template>
+        </div>
+        <!-- Lookup Address fields end -->
+
+        <template if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading " size="medium " variant="success "></lightning-spinner>
+        </template>
+
+        <template if:false={hideTile}>
+            <button if:true={showNextButton} name="manual " class="primary-button  marginbtn"
+                onclick={handleNext}>{label.UI_Button_Label_Next}</button>
+        </template>
+
+    </lightning-card>
+</template>

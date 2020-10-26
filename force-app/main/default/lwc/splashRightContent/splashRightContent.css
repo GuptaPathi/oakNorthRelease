@@ -1,0 +1,93 @@
+.left_side_content {
+    border-right-color: #39ac7c;
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
+this.svg {
+    background-color: #39ac7c;
+    fill: white !important;
+}
+
+.slds-media {
+    border-color: #39ac7c;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+    padding: 0px;
+}
+
+.slds-modal__content {
+    background-color: white;
+}
+
+.start_Button {
+    color: white;
+    background-color: #39ad7c;
+    border-radius: 20px;
+    border-width: 0px;
+    padding: 5px;
+    width: 130px;
+}
+
+.start_Button:active,
+.start_Button:hover {
+    background-color: #238b60;
+}
+
+.buttonDiv {
+    padding-top: 3rem;
+    padding-bottom: 1rem
+}
+
+.toggle-buttons {
+    width: 50px;
+    padding-top: 11px;
+    border-radius: 5px;
+    border-width: 0px;
+}
+
+.toggle-buttons_active {
+    background-color: #238b60;
+    border-width: 0px;
+}
+
+.toggle-buttons_Inactive {
+    background-color: #F1F1F1;
+    border: 1px solid #D8D8D8
+}
+
+.des {
+    color: #999999;
+    font-size: 12px;
+    line-height: 19px;
+}
+
+button:focus,
+div:focus,
+.ui-widget:focus {
+    outline: none;
+}
+
+.heading {
+    font-size: 20px;
+    color: black;
+    line-height: 30px;
+}
+
+.margin {
+    padding: 0px;
+    margin: 0px 0px 10px 0px;
+}
+
+@media only screen and (max-width: 600px) {
+    .heading {
+        font-size: 18px;
+    }
+    .tileContentBox {
+        padding: 7px 0px;
+    }
+    .mobilemargin {
+        margin-bottom: 40px;
+    }
+}

@@ -1,0 +1,129 @@
+<!-- ======================================================== 
+    * @template name : income.html 
+    * @author : EY - Sai Kumar 
+    * @purpose: This html file holds all income records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+
+	<div class="slds-p-top_medium slds-p-laft_medium paddingt0 container">
+
+		<template if:true={incomeDataFlag}>
+
+			<h1 class="heading">{label.UI_Text_Label_AlreadyKnownIncome}</h1>
+
+			<!-- START of Income Details list-->
+			<template for:each={incomeDetails} for:item="incomeData">
+				<ul key={incomeData.key} class="slds-p-around_medium slds-m-around_medium form-element padding0">
+					<div class="greentile">
+						<span class="leftsec">
+							{incomeData.key}
+						</span>
+						<span class="rightsec">
+							{incomeData.value}
+							<span class="monthly"> {label.UI_Input_Label_Yearly} </span>
+						</span>
+					</div>
+				</ul>
+			</template>
+			<!-- END of Income Details list-->
+
+			<!-- START of Salary list-->
+			<template for:each={arrSalaryData} for:item="incomeData">
+				<ul key={incomeData.index} class="slds-p-around_medium slds-m-around_medium form-element padding0" if:true={incomeData.showInTable}>
+					<div class="greentile">
+						<span class="leftsec">
+							{incomeData.Employer_Full_Name__c} - {label.UI_Input_Label_Salary}
+						</span>
+						<span class="rightsec">
+							£ {incomeData.Salary_Received_Annually__c}
+							<span class="monthly"> {label.UI_Input_Label_Yearly} </span>
+						</span>
+						<span>
+							<span class="leftsec">{label.UI_Input_Label_Bonus}</span>
+							<span class="rightsec">
+								£ {incomeData.Bonus_Received_Annually__c}
+								<span class="monthly"> {label.UI_Input_Label_Yearly} </span>
+							</span>
+						</span>
+					</div>
+				</ul>
+			</template>
+			<!-- END of Salary list-->
+
+			<c-do-you-have-util radio-flag={doYouHaveFlag} onhandleselection={handleDoYouHaveClick} header-question={label.UI_Text_Label_EmploymentQue}>
+			</c-do-you-have-util>
+
+		</template>
+
+		<!-- START of Salary fields -->
+		<template if:true={showSalaryFields}>
+
+			<template iterator:it={arrSalaryData} class="slds-p-around_medium">
+
+				<ul key={it.value.index} class="main-container">
+					<div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Employer_Full_Name__c'
+							label={label.UI_Input_Label_EmpFullName} value={it.value.Employer_Full_Name__c}
+							message-when-value-missing={utillCmpObject.objErrorMessages.Full_Name_of_Employer}
+							class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right"
+							onchange={handleChange} required></lightning-input>
+						<lightning-combobox data-index={it.index} name='Country_Jurisdiction_Of_Business_Trading__c'
+							class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left"
+							label={label.UI_Input_Label_JuridCountry} options={arrCountry}
+							value={it.value.Country_Jurisdiction_Of_Business_Trading__c}
+							placeholder="Country / Jurisdiction of Business Trading"
+							message-when-value-missing={utillCmpObject.objErrorMessages.Country_of_Jurisdiction}
+							required onchange={handleChange}></lightning-combobox>
+					</div>
+
+					<div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Salary_Received_Annually__c' type="number"
+							formatter="currency" label={label.UI_Input_Label_AnnualSalaryReceivings}
+							value={it.value.Salary_Received_Annually__c}
+							message-when-value-missing={utillCmpObject.objErrorMessages.Salary_received} required
+							pattern="([0-9.£,]*)$"
+							message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits}
+							placeholder="£0.00"
+							class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right"
+							onchange={handleChange}></lightning-input>
+						<lightning-input data-index={it.index} name='Bonus_Received_Annually__c' type="number"
+							formatter="currency" label={label.UI_Input_Label_BonusReceivingsAnnually}
+							value={it.value.Bonus_Received_Annually__c}
+							message-when-value-missing={utillCmpObject.objErrorMessages.Bonus_received} required
+							pattern="([0-9.£,]*)$"
+							message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits}
+							placeholder="£0.00"
+							class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left"
+							onchange={handleChange}></lightning-input>
+					</div>
+
+				</ul>
+
+				<div class="buttonscontainer" key={it.value.index} if:true={showDeleteIcon}>
+					<button class="addbutton" data-index={it.index} title="Remove Income" onclick={removeRecord}>
+						<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+							<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+						</svg>
+					</button>
+				</div>
+			</template>
+
+			<div class="buttonscontainer">
+				<button class="addbutton mobhide" onclick={addSalary}>
+					<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+						<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+					</svg>
+				</button>
+			</div>
+
+			<a onclick={addSalary} class="mobileshow">{label.UI_Text_Label_AddAnother}</a>
+
+		</template>
+		<!-- END of Salary fields -->
+
+		<div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center button">
+			<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+		</div>
+	</div>
+</template>

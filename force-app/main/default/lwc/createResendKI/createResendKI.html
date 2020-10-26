@@ -1,0 +1,58 @@
+<!-- ======================================================== 
+    *template name : createResendKI.html 
+    *author : EY - Gupta 
+    *purpose: This component holds creation and updation of Key Individuals
+    *created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<div class="">
+		<section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+			<div class="slds-modal__container subcontainer">
+
+				<!-- Modal/Popup Box LWC header here -->
+				<header class="slds-modal__header" style="border: 0px;">
+					<h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{modalHeading}</h2>
+				</header>
+
+				<!-- START - Modal/Popup Box For New KI creation  -->
+				<template if:true={bolNewKIflag}>
+					<div class="slds-card slds-p-around_medium scroll form slds-is-relative">
+						<template if:true={bolShowSpinner}>
+							<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+						</template>
+						<lightning-input label={label.UI_Input_Label_FirstName} required name="FirstName" disabled={isDisable} pattern="([a-zA-Z- ])*" message-when-pattern-mismatch={arrErrorData.NamePatternErr} onchange={handleFieldChange} message-when-value-missing={requiredError} value={updateData.FirstName}></lightning-input>
+						<lightning-input label={label.UI_Input_Label_LastName} required name="LastName" disabled={isDisable} value={updateData.LastName} pattern="([a-zA-Z- ])*" message-when-pattern-mismatch={arrErrorData.NamePatternErr} onchange={handleFieldChange}></lightning-input>
+						<lightning-input label={label.UI_Input_Label_Email} type="email" required name="Email" disabled={isDisable} value={updateData.Email} onchange={handleFieldChange} pattern="([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)" message-when-pattern-mismatch={arrErrorData.Email}></lightning-input>
+						<lightning-input label={label.UI_Input_Label_Phone} type="tel" required name="MobilePhone" disabled={isDisable} value={updateData.MobilePhone} onchange={handleFieldChange} pattern="([0-9]*)$" message-when-pattern-mismatch={arrErrorData.Phone}></lightning-input>
+						<lightning-combobox required dropdown-alignment="auto" options={rolePickList} value={updateData.Role} disabled={isDisable} label={label.UI_Input_Label_Role} name="Role" onchange={handleFieldChange} message-when-value-missing={requiredError}></lightning-combobox>
+					</div>
+
+					<!--START - Modal/Popup Box LWC footer -->
+					<footer class="pop-footer">
+						<button class="slds-button slds-button_neutral cancel" onclick={closeModal} title="Cancel">{label.UI_Button_Label_Cancel}</button>
+						<button class="slds-button slds-button_brand send" if:false={bolIsUpdate} onclick={submitDetails} disabled={isDisable} title="Save">{label.UI_Button_Label_Save}</button>
+						<button class="slds-button slds-button_brand send" if:true={bolIsUpdate} onclick={updateKI} disabled={isDisable} title="udpate">{label.UI_Button_Label_Update}</button>
+					</footer>
+				</template>
+				<!-- END - Modal/Popup Box For New KI creation -->
+
+				<!-- START - Modal/Popup Box For Resend email creation -->
+				<template if:true={bolResendFlag}>
+					<div class="slds-card slds-p-around_medium scroll form">
+						<lightning-input class="sendEmail" label={label.UI_Input_Label_Email} type="email" name="Email" value={objContactRecord.Email} onchange={handleEmailChange} pattern="([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$)" message-when-pattern-mismatch={arrErrorData.Email}></lightning-input>
+						<lightning-input class="sendPhone" label={label.UI_Input_Label_Phone} type="Phone" name="MobilePhone" pattern="([0-9]*)$" message-when-pattern-mismatch={arrErrorData.Phone} value={objContactRecord.MobilePhone} onchange={handleEmailChange}></lightning-input>
+					</div>
+
+					<footer class="slds-modal__footer">
+						<button onclick={closeModal} title="Cancel" class="cancel">{label.UI_Button_Label_Cancel}</button>
+						<button onclick={sendInvite} title="send" class="send">{label.UI_Button_Label_Send}</button>
+					</footer>
+
+				</template>
+				
+				<!-- END - Modal/Popup Box For New KI creation -->
+			</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open"></div>
+	</div>
+</template>

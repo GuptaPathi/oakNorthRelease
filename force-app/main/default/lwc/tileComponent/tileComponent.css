@@ -1,0 +1,91 @@
+.green-box {
+    margin-bottom: 20px;
+    background: #ECF6F2;
+    border: none;
+}
+
+.address-box {
+    background: #ECF6F2;
+    border: none;
+    margin: 10px 0px;
+    line-height: 28px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.editicon {
+    text-align: right;
+    position: absolute;
+    right: 60px;
+    margin-top: 10px;
+}
+
+.durationCls {
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+.textgrey {
+    color: #999999;
+}
+
+.date {
+    color: #000;
+    font-size: 12px;
+}
+
+.date p {
+    padding: 0px;
+    margin: 0px;
+    line-height: 16px;
+    font-size: 12px;
+}
+
+.primary-button {
+    background: #39AC7C;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 60px 0;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+    vertical-align: text-top;
+    margin: 60px auto;
+}
+
+.primary-button:hover {
+    color: #000;
+}
+
+.addressbox {
+    border: 1px solid #CBE9DD;
+    padding: 0px 10px;
+    margin: 10px 0px;
+}
+
+.addresscontent {
+    font-size: 12px;
+    line-height: 20px;
+    font-weight: 100;
+}
+
+.marginbtm10 {
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .editicon {
+        text-align: right;
+        position: absolute;
+        right: 30px;
+    }
+}

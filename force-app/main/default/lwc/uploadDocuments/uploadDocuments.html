@@ -1,0 +1,82 @@
+<!--================================================
+* @component name: uploadDocuments
+* @author: EY - Sai Kumar
+* @purpose: upload supporting documents page
+* @created date (25/08/2020) : SPECIFY CREATED DATE in dd/mm/yyyy
+================================================-->
+<template>
+
+    <div class="slds-p-around_medium customClass margin16">
+       
+        <p class="text-pi">{label.UI_Text_Label_SuppDoc}</p>
+
+        <div class="spinner">
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+                </lightning-spinner>
+            </template>
+        </div>
+
+        <!-- START OF File input fields-->
+        <div class="slds-grid slds-wrap mobilemargin">
+
+            <div class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small slds-form-element">
+                <lightning-file-upload label={label.UI_Input_Label_POA} name="Address Uploader" accept={acceptedFormats}
+                    record-id={relationShipId} onuploadfinished={handleUploadFinished} class="slds-p-around_medium">
+                </lightning-file-upload>
+            </div>
+
+            <div class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small slds-form-element">
+                <lightning-file-upload label={label.UI_Input_Label_Passport} name="Passport uploader"
+                    accept={acceptedFormats} record-id={relationShipId} onuploadfinished={handleUploadFinished}
+                    class="slds-p-around_medium">
+                </lightning-file-upload>
+            </div>
+
+        </div>
+        <!-- END OF File input fields-->
+
+        <div class="slds-grid slds-wrap mobilemargin">
+
+            <div class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small slds-form-element">
+                
+                <!-- List of files uploaded -->
+                <template for:each={filesList} for:item="eachItem" class="docList">
+                    <ul key={eachItem.Id} class="docList">
+                        <span>
+                            <p class="title">
+                                {eachItem.ContentDocument.Title}
+                            </p>
+                            <button value={eachItem.ContentDocument.Id} onclick={removeFile} class="slds-icon_container slds-icon-utility-comments" style="border:none;outline:none;background:none;">
+                                <svg style="fill:#BCBBBA;height: 15px;" class="slds-icon slds-icon-text-default"
+                                    aria-hidden="true">
+                                    <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#delete"></use>
+                                </svg>
+                            </button>
+                        </span>
+                    </ul>
+                </template>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="width100">
+
+        <div class=" mobilenone">
+            <button name="Skip" class="skip" onclick={handleSkip}>{label.UI_Button_Label_Skip}</button>
+        </div>
+        
+        <div class="button2 blockele">
+            <button name="Submit " class="primary-button" onclick={handleSubmit}>{label.UI_Button_Label_Next}</button>
+        </div>
+
+        <div class="displayonmobile">
+            <a name="Skip" class="skipm" onclick={handleSkip}>{label.UI_Button_Label_Skip}</a>
+        </div>
+
+    </div>
+
+</template>

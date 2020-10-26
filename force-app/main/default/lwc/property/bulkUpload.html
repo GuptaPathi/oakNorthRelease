@@ -1,0 +1,42 @@
+<!-- ======================================================== 
+    * @method name : property.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds all properties records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<template if:true={bolBulkUploadFields}>
+		<!--Header Title -->
+		<template if:true={headerTitle}>
+			<div class="heading">{label.UI_Text_Label_PropertyPortfolioDetails}</div>
+        </template>
+        
+		<!--prop value start-->
+		<div class="slds-grid slds-wrap margin30 focus">
+			<lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Estimated_Current_Value__c' label={label.UI_Input_Label_PropertyCurrentValueQues} type="number" formatter="currency" step="0.01" value={bulkRecord.Estimated_Current_Value__c} onchange={handleBulkChange} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} required message-when-value-missing={utillCmpObject.objErrorMessages.Estimated_current_value}></lightning-input>
+			<lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name="Outstanding_Mortgage_Check__c" label={label.UI_Text_Label_OutstandingMortgageQues} options={Radio_options} value={bulkRecord.Outstanding_Mortgage_Check__c} type="radio" onchange={handleBulkChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Outstanding_mortgage}></lightning-radio-group>
+        </div>
+        
+		<div class="slds-grid slds-wrap margin30" if:true={bulkRecord.MortagageCheck}>
+			<lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Outstanding_Balance__c' label={label.UI_Input_Label_OutstandingMortBalQues} type="number" formatter="currency" step="0.01" required value={bulkRecord.Outstanding_Balance__c} onchange={handleBulkChange} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} message-when-value-missing={utillCmpObject.objErrorMessages.Mandatory}></lightning-input>
+			<lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Monthly_Payment__c' label={label.UI_Input_Label_MortgageSumMonPaymentlQues} type="number" formatter="currency" step="0.01" value={bulkRecord.Monthly_Payment__c} onchange={handleBulkChange} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} required message-when-value-missing={utillCmpObject.objErrorMessages.Mandatory}></lightning-input>
+        </div>
+        
+		<!--Rent fields start-->
+		<div class="slds-grid slds-wrap margin30" if:false={ownerShipFlag}>
+			<lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name="Rental_Income_Check__c" label={label.UI_Text_Label_RentalIncomePropertyQues} options={Radio_options} value={bulkRecord.Rental_Income_Check__c} type="radio" onchange={handleBulkChange}></lightning-radio-group>
+			<!--/lightning-radio-group-->
+			<lightning-input if:true={bulkRecord.RentCheck} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Annual_Earnings__c' label={label.UI_Input_Label_AnnualEarningsQues} type="number" formatter="currency" step="0.01" value={bulkRecord.Annual_Earnings__c} onchange={handleBulkChange} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits}></lightning-input>
+		</div>
+		<div>
+			<button class="slds-align_absolute-center slds-p-top_small primary-button" onclick={moveToUploadPage}>{label.UI_Button_Label_Next}</button>
+		</div>
+    </template>
+    
+	<!--Bulk Asset upload-->
+	<template if:true={bolBulkUpload}>
+		<div class="focus">
+			<c-bulk-property-upload oncancelbulkupload={handleCancelBulkUpload} utill-cmp-object={utillCmpObject} bulk-record={bulkRecord} onnextproperty={handleNextBulkUpload} record-type-id={recordTypeId} account-id={utillCmpObject.accountId}></c-bulk-property-upload>
+		</div>
+	</template>
+</template>

@@ -1,0 +1,40 @@
+<!-- ======================================================== 
+    * @template name : manageUsers.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all KI records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+
+	<!--Lands on this when logged in user is PPOC+KI-->
+	<template if:true={buttonPageFlag}>
+		<div class="container splash_box">
+			<h1>{label.UI_Text_Label_CustomerDueDeligence}</h1>
+			<p>{label.UI_Text_Label_InviteOtherKI} </p>
+			<p>{label.UI_Text_Label_CDF}</p>
+			<button onclick={managePage} name={ManageUsersButtonLabel}
+				class="button-primary">{ManageUsersButtonLabel}</button>
+			<button onclick={managePage} name={ManageInfoButtonLabel}
+				class="button-secondary">{ManageInfoButtonLabel}</button>
+		</div>
+	</template>
+
+	<template if:false={buttonPageFlag}>
+
+		<!--Redirects when logged in user is Only KI-->
+		<template if:true={showFormA}>
+			<c-manage-information contact-id={contactId} utill-helper-object={utillHelperObject}></c-manage-information>
+		</template>
+
+		<!--Redirects when logged in user is only PPOC-->
+		<template if:true={showKItable}>
+			<c-manage-key-individuals utill-helper-object={utillHelperObject} loan-id={entityData.LLC_BI__Loan__c}
+				ppoc-loan-id={loanId} ppoc-contact-id={contactId}></c-manage-key-individuals>
+		</template>
+	</template>
+
+	<!--To show spinner when data loading-->
+	<template if:true={showSpinner}>
+		<lightning-spinner alternative-text="Loading" size="medium" variant="success"></lightning-spinner>
+	</template>
+</template>

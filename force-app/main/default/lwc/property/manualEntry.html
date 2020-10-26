@@ -1,0 +1,134 @@
+<!-- ======================================================== 
+    * template name : ManualEntry.html 
+    * author : EY - Gupta 
+    * purpose: This html file to add properties manually(adding one by one).
+    * created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<!--Header Title -->
+	<template if:true={headerTitle} class="focus">
+		<div class="heading">{headerTitle}</div>
+	</template>
+
+<!--To show Single property tile and it's value fields and next button-->
+<template if:true={bolShowPropertyFields}>
+
+		<!-- Tile Component With Out Property values like addresshistory Tile-->
+		<c-tile-component class="content" name="currentTile" oneditrecord={tileEditHandle} component-name="AddressHistory" utill-cmp-object={utillCmpObject} calling-page="Property" edit-button-flag=false address-list={lstTileProperty}> </c-tile-component>
+        
+        <!--if it is current editing details block-->
+        <template if:true={bolIscurrentAddress}>
+            
+            <!--Radio buttons for current property-->
+			<lightning-radio-group if:true={ownerShipFlag} class="aliasRadionButton slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small paddingsection" name="Ownership_Confirmation__c" label="" options={Radio_options} value={objProperty.Ownership_Confirmation__c} type="radio" onchange={handleChange} variant="label-hidden" message-when-value-missing={utillCmpObject.objErrorMessages.Ownership_confirmation}> </lightning-radio-group>
+            
+            <!--Do you own Radio button selects NO-->
+			<template if:true={bolRentProperty}>
+				<lightning-input class="padding-right padding-left_1 slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small marginbtm20" name="Monthly_Rent__c" label="How much is your monthly rent payment?" type="number" value={objProperty.Monthly_Rent__c} onchange={handleChange} formatter="currency" step="0.01"> </lightning-input>
+            </template>
+
+<!--Do you own  Radio button selects Yes-->
+<template if:true={bolOwnProperty}>
+
+				<div class="slds-grid slds-wrap margin30">
+					<lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Number_Of_Bedrooms__c' label="Number of bedrooms" type="number" value={objProperty.Number_Of_Bedrooms__c} onchange={handleChange}> </lightning-input>
+					<lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Size_sqf__c' label="Size(sqf)" type="number" value={objProperty.Size_sqf__c} onchange={handleChange}> </lightning-input>
+                </div>
+                
+				<div class="slds-grid slds-wrap margin30">
+					<lightning-combobox name="Property_Type__c" if:true={propertyPickList} label="Property type" placeholder="Select an option" options={propertyPickList} onchange={handleChange} value={objProperty.Property_Type__c} class="slds-size--1-of-1 slds-medium-size--1-of-2 padding-right slds-large-size--1-of-2 slds-p-left_xx-small" required message-when-value-missing={utillCmpObject.objErrorMessages.Property_Type}> </lightning-combobox>
+					<lightning-combobox name="Freehold_Leasehold__c" if:true={ownershipPickList.data} label="Freehold/Leasehold" placeholder="Select an option" options={ownershipPickList.data.values} onchange={handleChange} value={objProperty.Freehold_Leasehold__c} class="slds-size--1-of-1 slds-medium-size--1-of-2 padding-right slds-large-size--1-of-2 slds-p-left_xx-small" required message-when-value-missing={utillCmpObject.objErrorMessages.Freehold_Or_Leasehold}> </lightning-combobox>
+                </div>
+                
+				<div class="slds-grid slds-wrap margin30">
+					<lightning-input class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Estimated_Current_Value__c' label="What's the estimated current value?" type="number" formatter="currency" step="0.01" value={objProperty.Estimated_Current_Value__c} onchange={handleChange} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} required message-when-value-missing={utillCmpObject.objErrorMessages.Estimated_current_value}> </lightning-input>
+					<lightning-input if:true={showLeaseYears} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Lease_Left_Years__c' label="How many years left on the lease?" type="number" value={objProperty.Lease_Left_Years__c} onchange={handleChange}> </lightning-input>
+                </div>
+                
+				<!--prop value fields-->
+				<div class="slds-grid slds-wrap margin30">
+					<lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name="Outstanding_Mortgage_Check__c" label="Any outstanding mortagage?" options={Radio_options} value={objProperty.Outstanding_Mortgage_Check__c} type="radio" onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Outstanding_mortgage}> </lightning-radio-group>
+					<lightning-input if:true={objProperty.MortagageCheck} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Outstanding_Balance__c' label="How much is outstanding?" type="number" formatter="currency" step="0.01" required value={objProperty.Outstanding_Balance__c} onchange={handleChange} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} message-when-value-missing={utillCmpObject.objErrorMessages.Mortgage_monthly_payment}> </lightning-input>
+				</div>
+				<div class="slds-grid slds-wrap margin30">
+					<lightning-input if:true={objProperty.MortagageCheck} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Monthly_Payment__c' label="What's your monthly payment?" type="number" formatter="currency" step="0.01" value={objProperty.Monthly_Payment__c} onchange={handleChange} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} required message-when-value-missing={utillCmpObject.objErrorMessages.Mortgage_monthly_payment}> </lightning-input>
+					<lightning-radio-group class="aliasRadionButton padding-right slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small" name="Rental_Income_Check__c" label="Do you earn any rental income from this property?" options={Radio_options} value={objProperty.Rental_Income_Check__c} type="radio" if:false={ownerShipFlag} onchange={handleChange} required message-when-value-missing={utillCmpObject.objErrorMessages.Rental_Income}> </lightning-radio-group>
+                </div>
+                
+				<!--Rent field-->
+				<div class="slds-grid slds-wrap margin30" if:false={ownerShipFlag}>
+					<lightning-input if:true={objProperty.RentCheck} class="slds-size--1-of-1 slds-medium-size--1-of-2 slds-large-size--1-of-2 slds-p-left_xx-small padding-right" name='Annual_Earnings__c' label="How much do you earn?(Annually)" type="number" formatter="currency" step="0.01" value={objProperty.Annual_Earnings__c} onchange={handleChange} pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits}> </lightning-input>
+                </div>
+                
+                <!--Next button to move All property page-->
+				<div class="width100">
+					<button class="slds-align_absolute-center slds-p-top_small primary-button" onclick={addDetails}>Next </button>
+                </div>
+                
+			</template>
+</template>
+</template>
+
+<!--To show All property cards and it's values and Add Property Button And next button-->
+<div class="listingaddress">
+    <template if:true={bolShowAllProperties}>
+
+			<!-- Tile Component With Property values-->
+			<c-tile-component name="AllTile" oneditrecord={tileEditHandle} component-name="Property" utill-cmp-object={utillCmpObject} calling-page="Property" delete-button-flag=true ondeleterecord={handleDeleteProperty} address-list={lstAllProperties}> </c-tile-component>
+		</template>
+</div>
+
+<!--To Add Property from Address history component-->
+<template if:true={bolAddProperty}>
+		<c-address-history utill-cmp-object={utillCmpObject} address-history-required="Add Property" hide-tile="true" oncancelproperty={cancelOrUpdateAddress} onaddproperty={handleAddedAddress}> </c-address-history>
+    </template>
+
+<!--To Edit Property from Address history component-->
+<template if:true={bolEditProperty}>
+		<c-address-history property-edit-list={lstEditRecord} property-page-call=true event-data={eventData} utill-cmp-object={utillCmpObject} address-history-required="Add Property" hide-tile="true" oncancelproperty={cancelOrUpdateAddress} onaddproperty={handleAddedAddress}> </c-address-history>
+    </template>
+
+<!--All Property Buttons-->
+<template if:true={bolShowButtons}>
+		<div class="block"> 
+            <!--Button to add property if current property is rented one-->
+            <a class="bulkbutton" onclick={addProperty} if:false={bolShowAllProperties} data-name="I own a different Property">I own a different Property</a>
+            
+            <button class="addbutton mobhide" data-name="Add another property" if:true={bolShowAllProperties} onclick={addProperty} title="Add Another Property">
+				<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+					<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+				</svg>
+            </button>
+            
+        </div>
+
+        <!--Add property From all property tile-->
+        <a class=" showmobile" data-name="Add another property" if:true={bolShowAllProperties} onclick={addProperty} title="Add Another Property">
+            Add Another Property
+        </a> 
+
+    </template>
+
+<!--Final Buttons-->
+<template if:true={bolShowButtons}>
+
+		<!--Bulk Asset upload-->
+		<template if:true={bolShowButtons}>
+			<div if:true={bolShowAllProperties}>
+				<div class="block">
+					<h2 class="text">Having more than 3 Property Assets?</h2> <a class="bulkbutton" onclick={handleBulkUpload}>Bulk Upload Property Assets</a> </div>
+			</div>
+        </template>
+
+<!--Button to save records and move Next section-->
+<div class="width100">
+    <button class="slds-align_absolute-center slds-p-top_small primary-button" onclick={handleNext}>Next </button>
+</div>
+
+</template>
+
+<!-- Showing Spinner-->
+<template if:true={showSpinner}>
+		<lightning-spinner alternative-text="Loading" size="medium" variant="success"></lightning-spinner>
+	</template>
+</template>

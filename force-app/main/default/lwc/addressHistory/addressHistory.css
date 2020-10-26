@@ -1,0 +1,470 @@
+.padding30 {
+    padding: 30px;
+}
+
+.margintp {
+    margin-top: 30px;
+    display: block
+}
+
+.padding16 {
+    padding: 0px 16px 0px 16px;
+}
+
+.paddingrght {
+    padding-right: 16px;
+}
+
+.blockelement1 {
+    display: inline-block;
+}
+
+.address {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.paddinglookup {
+    padding: 0px 30px 0px 15px;
+}
+
+.padding-left {
+    padding-left: 15px;
+}
+
+.padding-right {
+    padding-right: 15px;
+}
+
+.width100 {
+    width: 100%;
+    text-align: center;
+}
+
+.mobilenone {
+    display: inline-block;
+    text-align: center;
+    margin-left: 8px;
+}
+
+.lookbtn2 {
+    margin-top: 57px;
+    margin-left: 8px;
+}
+
+.addressmaually {
+    margin-top: 57px;
+    margin-left: 8px;
+}
+
+.heading16 {
+    font-size: 16px;
+    padding: 30px 30px 0px 30px;
+}
+
+.heading2 {
+    padding: 20px 30px 0px 0px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.heading3 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.centeralignment {
+    text-align: center
+}
+
+.lookupbtn {
+    background: #999;
+    border: none;
+    border-radius: 24px;
+    padding: 12px 35px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    -webkit-transition: all .5s ease;
+}
+
+.primary-button:hover {
+    color: #000;
+}
+
+.primary-button {
+    background: #39AC7C;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 60px 0;
+    line-height: 0px;
+    padding: 0px;
+    display: block;
+    text-align: center;
+    margin: 53px auto 50px auto
+}
+
+.line {
+    width: 99%;
+    height: 1px;
+    background: #a3d6be;
+    margin: 30px auto;
+}
+
+.widthmobile {
+    width: 42%;
+}
+
+.enteraddress {
+    color: #000000;
+    text-decoration: underline;
+    font-size: 14px;
+    outline: none;
+    line-height: 42px;
+}
+
+.enteraddress:focus {
+    outline: none;
+}
+
+.lookupbtn:focus {
+    outline: none;
+}
+
+.enteraddress:hover {
+    color: #999999;
+}
+
+.lookupbtn:hover {
+    background: #838383
+}
+
+.text18 {
+    font-size: 18px;
+    font-weight: 900;
+}
+
+.blockele {
+    display: inline-block;
+}
+
+.showmobile {
+    display: none
+}
+
+.skip {
+    background: #eaeaea;
+    width: 187px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #000;
+    font-size: 18px;
+    margin: 51px 10px 0px 0px;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.or {
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.addressbtn {
+    background: #999999;
+    color: #fff;
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    line-height: 20px;
+    width: 200px;
+    border-radius: 60px;
+    height: 40px;
+    bottom: 0px;
+    position: relative;
+}
+
+.skipmobile {
+    display: none;
+}
+
+.skip:hover {
+    color: #999;
+}
+
+.desktophid {
+    display: none;
+}
+
+.displayonmobile {
+    display: none
+}
+
+.containerP {
+    padding: 0px 30px 0px 32px
+}
+
+.width100 {
+    width: 100%;
+    text-align: center;
+}
+
+.postcodeinput {
+    padding: 0px 30px 20px 34px
+}
+
+.mobilenone {
+    display: inline-block;
+    text-align: center;
+}
+
+.skipmobile {
+    display: none;
+}
+
+
+/*Mobile Media Query */
+
+
+/* Media Query for Mobile Devices */
+
+@media (max-width: 480px) {
+    .primary-button {
+        margin: 50px auto 40px;
+        width: 92%;
+    }
+    .or {
+        padding: 0px
+    }
+    .blockele {
+        display: block;
+    }
+    .skipm {
+        display: block;
+        margin-bottom: 20px;
+        color: #000;
+        text-decoration: underline;
+    }
+    .postcode {
+        margin-bottom: 20px;
+    }
+    .mobilenone {
+        display: none;
+    }
+    .lookbtn2 {
+        display: none
+    }
+    .button2 {
+        margin: 20px auto 10px 0!important;
+    }
+    .padding-left {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .padding-right {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .block {
+        margin: 10px 20px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .containerP {
+        padding: 0px
+    }
+    .listingaddress {
+        margin: 0 20px;
+    }
+    .block {
+        margin: 10px 20px;
+    }
+    .skip {
+        width: 100%;
+        margin: 0px auto;
+    }
+    .padding-left {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .postcodelookup {
+        margin-bottom: 20px;
+    }
+    .width100 {
+        width: 100%
+    }
+    .padding-right {
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .button1 {
+        margin: 10px auto 20px 0px!important;
+        width: 100%!important;
+    }
+    .button2 {
+        margin: 20px auto 10px 0!important;
+        width: 100%!important;
+    }
+    .lookupbtn {
+        width: 100%;
+        margin: 0 auto 20px auto
+    }
+    .postcodeinput {
+        padding: 0px 10px
+    }
+    .widthmobile {
+        width: 100%!important;
+    }
+    .postcode {
+        width: 92%;
+        margin: 10px auto;
+    }
+    .address {
+        margin: 0px 10px;
+    }
+    .heading16 {
+        padding: 0px;
+        margin: 0px 10px;
+    }
+    .paddinglookup {
+        padding: 0px 30px 0px 15px;
+    }
+    .enteraddress {
+        text-align: center;
+        width: 100%;
+    }
+    .or {
+        margin-top: 10px;
+        text-align: center;
+        width: 100%;
+    }
+    .skipmobile {
+        display: block;
+        margin: 20px 0 40px 0px;
+        text-align: center;
+        color: #000;
+        text-decoration: underline;
+    }
+    .displayonmobile {
+        display: block;
+    }
+    .mobile {
+        padding: 0px!important;
+    }
+    .mobilenone {
+        display: none;
+    }
+    .desktophid {
+        display: block;
+    }
+    .marginbtn {
+        margin: 20px auto 40px
+    }
+}
+
+
+/* Media Query for low resolution  Tablets, Ipads */
+
+@media (min-width: 481px) and (max-width: 899px) {
+    .marginbtn {
+        margin: 20px auto 40px
+    }
+    .padding-left {
+        padding-left: 5px;
+    }
+    .heading3 {
+        padding-top: 20px;
+    }
+    .padding-right {
+        padding-right: 5px;
+    }
+    .addressmaually {
+        margin-top: 0px;
+        text-align: center;
+        width: 100%;
+        padding-left: 60px;
+    }
+    .widthmobile {
+        width: 49%;
+    }
+    .addressmaually {
+        margin-top: 0px;
+        text-align: center;
+        width: 100%;
+        padding-left: 60px;
+    }
+    .lookupbtn2 {
+        display: none
+    }
+}
+
+
+/* Media Query for Tablets Ipads portrait mode */
+
+@media (min-width: 900px) and (max-width: 1024px) {
+    .marginbtn {
+        margin: 20px auto 40px
+    }
+    .primary-button {
+        margin: 60px auto 40px auto
+    }
+    .or {
+        margin-top: 60px;
+        line-height: 37px;
+        color: #7f7f7f;
+        font-size: 14px;
+        width: 42px;
+        padding-left: 0px;
+    }
+    .widthmobile {
+        width: 49%;
+    }
+    .padding-left {
+        padding-left: 5px;
+    }
+    .padding-right {
+        padding-right: 5px;
+    }
+    .addressmaually {
+        text-align: center;
+    }
+    .poscodewidth {
+        width: 33%!important;
+    }
+    .or {
+        padding-left: 0px
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1440px) {
+    .lookupbtn {
+        padding: 12px 0px;
+    }
+    .poscodewidth {
+        width: 37%!important;
+    }
+    .or {
+        padding-left: 0px
+    }
+}
+
+@media (min-width: 1440px) and (max-width: 2000px) {
+    .lookupbtn {
+        padding: 12px 0px;
+    }
+    .poscodewidth {
+        width: 37%!important;
+    }
+    .or {
+        padding-left: 0px
+    }
+}

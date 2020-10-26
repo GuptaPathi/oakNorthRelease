@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>48.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="ManageUsersButtonLabel" label="Manage Users Button Label" type="String" default="Manage Users"/>
+            <property name="ManageInfoButtonLabel" label="Manage Info Button Label" type="String" default="Manage Information"/>
+            <property name="accountId" label="accountId" type="String" default="0013M000004ZZtCQAW"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

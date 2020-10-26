@@ -1,0 +1,153 @@
+.slds-input {
+    border-radius: 25px;
+    border: 2px solid #20bd7b;
+    padding: 5px 15px 4px 20px;
+    font-family: RobotoLight;
+    height: 43px;
+    margin-top: 10px;
+}
+
+.splash_box {
+    -webkit-box-shadow: 0px 4px 16px 0px rgba(221, 221, 221, 1);
+    -moz-box-shadow: 0px 4px 16px 0px rgba(221, 221, 221, 1);
+    box-shadow: 0px 4px 16px 0px rgba(221, 221, 221, 1);
+    width: 76%;
+    margin: 60px auto;
+    padding: 50px;
+    background: #fff;
+    text-align: center;
+    color: #000;
+}
+
+.splash_box p {
+    display: block;
+    font-size: 18px;
+    line-height: 26px;
+    margin: 10px auto;
+    width: 86%;
+}
+
+.splash_box h1 {
+    display: block;
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 900;
+    padding: 0px;
+    margin-bottom: 20px;
+    width: 76%;
+    margin: 0px auto;
+}
+
+.button-primary {
+    background: #39ad7c;
+    border: 2px solid #39ad7c;
+    width: 257px;
+    padding: 14px 20px;
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 40px;
+    height: 48px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-top: 40px;
+    -webkit-transition: all 0.5s ease;
+    line-height: 18px;
+    margin-right: 10px;
+}
+
+button:focus {
+    outline: 0 !important;
+}
+
+.button-secondary {
+    background: #fff;
+    border: 2px solid #39ad7c;
+    width: 257px;
+    padding: 14px 20px;
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    border-radius: 40px;
+    margin-top: 40px;
+    height: 47px;
+    vertical-align: middle;
+    font-weight: 100;
+    outline: none;
+    display: inline-block;
+    -webkit-transition: all 0.5s ease;
+    line-height: 18px;
+    margin-right: 10px;
+}
+
+.button-secondary:hover {
+    border: 2px solid #248d61;
+    background: #248d61;
+    color: #fff;
+}
+
+.button-primary:hover {
+    color: #000;
+    background: #fff;
+    border: 2px solid #39ad7c;
+    font-weight: 900;
+}
+
+@media only screen and (max-width: 481px) {
+    .splash_box {
+        width: 100%;
+        padding: 0px;
+        margin-bottom: 10px;
+        margin-top: 0px;
+    }
+    .button-secondary {
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+    .splash_box h1 {
+        font-size: 20px;
+        line-height: 30px;
+        margin-top: 30px;
+        padding-top: 30px;
+        width: 90%;
+    }
+    .button-primary {
+        margin-top: 20px;
+    }
+}
+
+
+/* Media Query for low resolution  Tablets, Ipads */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .splash_box {
+        -webkit-box-shadow: 0 4px 16px 0 #ddd;
+        -moz-box-shadow: 0 4px 16px 0 #ddd;
+        box-shadow: 0 4px 16px 0 #ddd;
+        width: 100%;
+        margin: 0px auto;
+        /* margin: 10px auto; */
+        padding: 30px;
+        background: #fff;
+        text-align: center;
+        color: #000;
+    }
+}
+
+
+/* Media Query for Tablets Ipads portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .splash_box {
+        -webkit-box-shadow: 0 4px 16px 0 #ddd;
+        -moz-box-shadow: 0 4px 16px 0 #ddd;
+        box-shadow: 0 4px 16px 0 #ddd;
+        width: 90%;
+        margin: 0px auto;
+        /* margin: 10px auto; */
+        padding: 50px;
+        background: #fff;
+        text-align: center;
+        color: #000;
+    }
+}

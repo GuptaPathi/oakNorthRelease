@@ -1,0 +1,91 @@
+<!-- ======================================================== 
+    * template name : manageInformationTemplate.html 
+    * author : EY - Gupta 
+    * purpose: This html file holds all accordions by using one list of objects JS variable.
+    * created date (dd/mm/yyyy) : 20/08/2020 
+    ============================================================-->
+
+<template>
+	
+	<!--Conditionl Block to check pathObject is loaded or not-->
+	<template if:true={pathObject} style="width: 30ch;">
+		
+		<!--looping all accordions-->
+		<template for:each={pathObject} for:item="eachHeader"  >
+			<ul key={eachHeader.label} class="ulist mainSection">	
+				<div class="slds-hide"><div class={eachHeader.scroolPossition}>hai</div></div>
+			
+				<!--Accordion - Main Section header-->
+				<div class={eachHeader.value} data-name={eachHeader.value} onclick={onclickSection} data-sectioname={eachHeader.value}>
+					<div class="slds-box--small mainTitle">
+						<svg class="slds-icon slds-icon-text-default slds-icon__container--circle slds-icon--large individual" aria-hidden="true">
+							<use xlink:href={eachHeader.iconPath}></use>
+						</svg> <span class="slds-p-left_x-small font-bold">{eachHeader.UIlabel}</span>
+						<div class={eachHeader.completedIcon}>
+							<svg class="slds-icon slds-float_right slds-icon-text-default slds-icon__container--circle slds-icon--large success-icon " aria-hidden="true">
+								<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#check"></use>
+							</svg>
+							<svg class="slds-icon slds-icon-text-default edit-icon" aria-hidden="true">
+								<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#edit"></use>
+							</svg>
+						</div>
+						<div class={eachHeader.openSectionIcon}>
+							<svg class="slds-icon slds-icon-text-default open-icon" aria-hidden="true" style="margin-right: 20px;">
+								<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#chevrondown"></use>
+							</svg>
+						</div>
+					</div>
+				</div>
+
+				<div class="slds-p-left_small slds-p-right_small" style="padding:0px;">
+					<div class={eachHeader.class} if:true={eachHeader.subSection}>
+						<template for:each={eachHeader.subSection} for:item="subSectionItem" class="subSectionStart">
+							<ul key={subSectionItem.value} class={subSectionItem.value} style="background:none">
+								<div key={subSectionItem.value} class="scrool slds-hide"><div class={subSectionItem.scroolPossition}>sub</div></div>
+								<div class="slds-p-bottom_xx-small mainborder">
+									<div class="subTitle">
+
+										<!--Accordion - Sub Section header-->
+										<div onclick={onclickSection} data-name={subSectionItem.value} class="subsec">
+											<lightning-icon size="x-small" variant="success" icon-name={subSectionItem.iconName} alternative-text="down" title="down" style="display: none;"></lightning-icon> <span class="slds-p-left_x-small x">{subSectionItem.UIlabel}</span>
+											<div class={subSectionItem.completedIcon}>
+												<svg class="slds-icon slds-icon-text-default edit-icon icon1" aria-hidden="true">
+													<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#edit"></use>
+												</svg>
+											</div>
+										</div>
+
+										<!--Sub section content-->
+										<div class={subSectionItem.className}>
+											<div class="slds-p-bottom_xx-small slds-p-top_medium class1" role="subsection">
+												<c-customer-form-details ondeleterecord={handleDeleteRecord} onsummarypageedit={handleSummaryPage} previous-section={previousSection} is-current-section-editable={isCurrentSectionEditable} str-current-section={strCurrentSection} onnextpage={handlenext} utill-cmp-object={utillHelperObject} current-page={subSectionItem.value}></c-customer-form-details>
+											</div>
+										</div>
+
+									</div>
+								</div> 
+							</ul>
+						</template>
+</div>
+
+<!--Main Section content-->
+<div class={eachHeader.class} if:false={eachHeader.subSection}>
+    <c-customer-form-details onaddressnextpage={handleAddressNext} ondeleterecord={handleDeleteRecord} previous-section={previousSection} oneditrecord={handleSummaryAddressEdit} address-history-event={addressHistoryEvent} address-history-edit={addressHistoryEdit} is-current-section-editable={isCurrentSectionEditable}
+        str-current-section={strCurrentSection} onsummarypageedit={handleSummaryPage} onnextpage={handlenext} utill-cmp-object={utillHelperObject} current-page={eachHeader.value}></c-customer-form-details>
+</div>
+
+</div>
+</ul>
+</template>
+</template>
+
+<!--Loading spinner-->
+<template if:true={showSpinner}>
+		<lightning-spinner alternative-text="Loading" size="medium" variant="success"></lightning-spinner>
+	</template>
+
+<!--Success Page when all sections are completed-->
+<template if:true={AllDone}>
+		<c-success-page utill-cmp-object={utillCmpObject}></c-success-page>
+	</template>
+</template>

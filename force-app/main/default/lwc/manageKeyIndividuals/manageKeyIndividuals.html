@@ -1,0 +1,55 @@
+<!-- ======================================================== 
+    * @method name : manageKeyIndividuals.html 
+    * @author : EY - Gupta 
+    * @purpose: 
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+    <h1 class="heading">{label.UI_Text_Label_ManageKI}</h1>
+    
+	<div class="slds-p-top_medium button-container">
+		<button name="newKI" onclick={handleResendOrNewKI} class="slds-align_absolute-center slds-p-top_small primary-button1">{label.UI_Text_Label_CreateKI}</button>
+    </div>
+    
+	<div class="container">
+		<div style="overflow-x:auto; padding: 4px;">
+			<table class="slds-table slds-table_cell-buffer slds-table_bordered" style="border:1px solid #EAEAEA">
+				<thead>
+					<tr>
+						<template for:each={columns} for:item="headerLabel">
+							<th key={headerLabel.label} class="headings">{headerLabel.label}</th>
+						</template>
+						<th class="headings"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<template for:each={kiRecords} for:item="record" for:index="index">
+						<tr key={record.Id}>
+							<td>{record.FirstName}</td>
+							<td>{record.LastName}</td>
+							<td>{record.Email}</td>
+							<td>{record.MobilePhone}</td>
+							<td>{record.Role}</td>
+							<td>{record.Registration_Status__c}</td>
+							<td>
+								<lightning-button name={index} class="buttons-manage" label={record.buttonlabel} onclick={handleResend} if:true={record.buttonflag}></lightning-button>
+							</td>
+							<td class="buttonstd">
+								<lightning-button-icon variant="bare" name={index} icon-name="utility:edit" onclick={handleEdit}></lightning-button-icon>
+							</td>
+						</tr>
+					</template>
+				</tbody>
+			</table>
+		</div>
+    </div>
+    
+	<template if:true={createNewKIFlag} class="slds-card">
+		<c-create-resend-k-i onclosemodelbox={closeModel} new-k-idata={editedRecord} str-ppoc-contact-id={ppocContactId} str-ppoc-loan-id={ppocLoanId} obj-contact-record={selectedRecord} button-type={buttonOperation}></c-create-resend-k-i>
+    </template>
+    
+	<template if:true={spinnerFlag}>
+		<lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </template>
+    
+</template>

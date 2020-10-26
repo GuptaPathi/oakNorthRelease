@@ -1,0 +1,146 @@
+<!-- ================================================================================== 
+    * @template name : customerFormDetails.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all the components related to formA and formB
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+======================================================================================-->
+<template>
+    <div class="slds-card contentbox">
+
+        <fieldset disabled={fieldset}>
+
+            <!-- START of sections -->
+            <div class="PersonalDetails slds-hide">
+                <template if:true={showPersonalInfo}>
+                    <c-personal-information utill-cmp-object={utillCmpObject} class="PersonalDetailsPage">
+                    </c-personal-information>
+                </template>
+            </div>
+
+            <div class="AddressHistory slds-hide">
+                <template if:true={showAddressHistory}>
+                    <c-address-history utill-cmp-object={utillCmpObject} summary-page-call={addressHistoryEdit}
+                        event-data={addressHistoryEvent}></c-address-history>
+                </template>
+            </div>
+
+            <div class="TaxDetails slds-hide">
+                <template if:true={showTaxDetails}>
+                    <c-tax-details utill-cmp-object={utillCmpObject}></c-tax-details>
+                </template>
+            </div>
+
+            <div class="AdditionalDetails slds-hide">
+                <template if:true={showAdditionalDetails}>
+                    <c-additional-information utill-cmp-object={utillCmpObject}></c-additional-information>
+                </template>
+            </div>
+
+            <div class="SupportingDocuments slds-hide">
+                <template if:true={showUploadDocuments}>
+                    <c-upload-documents utill-cmp-object={utillCmpObject}></c-upload-documents>
+                </template>
+            </div>
+
+            <div class="Summary slds-hide">
+                <template if:true={showSummaryPage}>
+                    <c-summary-page utill-cmp-object={utillCmpObject}></c-summary-page>
+                </template>
+            </div>
+
+            <div class="Property  slds-hide">
+                <template if:true={showPropertyPage}>
+                    <c-property utill-cmp-object={utillCmpObject}></c-property>
+                </template>
+            </div>
+
+            <div class="Trust slds-hide">
+                <template if:true={showTrustsPage}>
+                    <c-trusts utill-cmp-object={utillCmpObject}></c-trusts>
+                </template>
+            </div>
+
+            <div class="Business slds-hide">
+                <template if:true={showBusinessPage}>
+                    <c-business-page utill-cmp-object={utillCmpObject}></c-business-page>
+                </template>
+            </div>
+
+            <div class="InvestmentPortfolios slds-hide">
+                <template if:true={showInvestmentPortfoliosPage}>
+                    <c-investment-portfolios utill-cmp-object={utillCmpObject}></c-investment-portfolios>
+                </template>
+            </div>
+
+            <div class="Shares slds-hide">
+                <template if:true={showSharesPage}>
+                    <c-shares utill-cmp-object={utillCmpObject}></c-shares>
+                </template>
+            </div>
+
+            <div class="Savings slds-hide">
+                <template if:true={showSavingsPage}>
+                    <c-savings utill-cmp-object={utillCmpObject}></c-savings>
+                </template>
+            </div>
+
+            <div class="OtherAssets slds-hide">
+                <template if:true={showOtherAssetsPage}>
+                    <c-other-assets utill-cmp-object={utillCmpObject}></c-other-assets>
+                </template>
+            </div>
+
+            <div class="SourceOfWealth slds-hide">
+                <template if:true={showSourceOfWealthPage}>
+                    <c-source-of-wealth utill-cmp-object={utillCmpObject}></c-source-of-wealth>
+                </template>
+            </div>
+
+            <div class="ExistingLiability slds-hide">
+                <template if:true={showExistingLiabilityPage}>
+                    <c-liabilities-summary utill-cmp-object={utillCmpObject}></c-liabilities-summary>
+                </template>
+            </div>
+
+            <div class="Loans slds-hide">
+                <template if:true={showLoansPage}>
+                    <c-loans utill-cmp-object={utillCmpObject}></c-loans>
+                </template>
+            </div>
+
+            <div class="CreditCards slds-hide">
+                <template if:true={showCreditCardsPage}>
+                    <c-credit-cards utill-cmp-object={utillCmpObject}></c-credit-cards>
+                </template>
+            </div>
+
+            <div class="ContigentLiabilities slds-hide">
+                <template if:true={showContingentLiabilitiesPage}>
+                    <c-contingent-liabilities utill-cmp-object={utillCmpObject}></c-contingent-liabilities>
+                </template>
+            </div>
+
+            <div class="OtherLiabilities slds-hide">
+                <template if:true={showOtherLiabilitiesPage}>
+                    <c-other-liabilities utill-cmp-object={utillCmpObject}></c-other-liabilities>
+                </template>
+            </div>
+
+            <div class="Salary slds-hide">
+                <template if:true={showSalaryPage}>
+                    <c-income utill-cmp-object={utillCmpObject}></c-income>
+                </template>
+            </div>
+
+            <div class="Expenditure slds-hide">
+                <template if:true={showExpenditurePage}>
+                    <c-expenditure utill-cmp-object={utillCmpObject}></c-expenditure>
+                </template>
+            </div>
+            
+            <!-- END of sections -->
+        </fieldset>
+
+    </div>
+
+</template>

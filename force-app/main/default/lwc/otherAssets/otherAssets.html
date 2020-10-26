@@ -1,0 +1,49 @@
+<!-- ======================================================== 
+    * @method name : otherAsset.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds all trust records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<c-do-you-have-util radio-flag={doYouHaveFlag} onhandleselection={handleDoYouHaveClick} header-question={label.UI_Text_Label_AnyOtherAssetQue} yes-button-label="Yes, I do" no-button-label="No, I don't"></c-do-you-have-util>
+	<template if:true={showOtherAssetFields}>
+		<template if:true={lstOtherAssetData}>
+
+			<!-- START - Iterate over list of otherAsset records -->
+			<template iterator:it={lstOtherAssetData} class="slds-p-around_medium">
+				<ul key={it.value.index} class="slds-p-around_medium slds-m-around_medium form-element main-container">
+					<div class="slds-grid slds-wrap">
+						<lightning-textarea data-index={it.index} name='Asset_Description__c' label={label.UI_Input_Label_AssetDescription} value={it.value.Asset_Description__c} required message-when-value-missing={utillCmpObject.objErrorMessages.Describe_the_asset} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-textarea>
+						<lightning-input data-index={it.index} name='Asset_Estimated_Value__c' label={label.UI_Input_Label_AssetEstimation} value={it.value.Asset_Estimated_Value__c} required message-when-value-missing={utillCmpObject.objErrorMessages.Estimated_value_of_asset} placeholder="£0.00" type="number" formatter="currency" step="0.01" pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left " onchange={handleChange}></lightning-input>
+					</div>
+                </ul>
+                
+				<!---Creating Delete Icon for other asset records-->
+				<div class="buttonscontainer" key={it.value.index} if:true={showDeleteIcon}>
+					<button class="addbutton" data-index={it.index} title="Remove Assets" onclick={removeRecord}>
+						<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+							<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+						</svg>
+					</button>
+				</div>
+			</template>
+            <!-- END - Iterate over list of otherAsset records -->
+            
+        </template>
+        
+		<!--Add another other asset records for mobile-->
+		<div class="buttonscontainer">
+			<button class="addbutton mobhide" onclick={addOtherAsset} title="Add Another Asset">
+				<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+					<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+				</svg>
+			</button>
+        </div>
+        
+        <a onclick={addOtherAsset} class="mobileshow">{label.UI_Text_Label_AddAnother}</a>
+		<div class="width100">
+			<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+        </div>
+        
+	</template>
+</template>

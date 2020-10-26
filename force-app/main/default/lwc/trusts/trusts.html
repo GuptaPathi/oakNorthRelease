@@ -1,0 +1,58 @@
+<!-- ======================================================== 
+    * method name : trust.html 
+    * author : EY - Gupta 
+    * purpose: This html file holds all trust records data.
+    * created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<c-do-you-have-util radio-flag={doYouHaveFlag} onhandleselection={handleDoYouHaveClick} header-question={label.UI_Text_Label_WealthLegalArraQue} description={doYouHaveCmpdescription} yes-button-label="Yes, I do" no-button-label="No, I don't"></c-do-you-have-util>
+	<template if:true={showTrustFields}>
+		<h1 class="heading1">{label.UI_Text_Label_WealthHelsTrust}</h1>
+		<template if:true={lstTrustData}>
+
+			<!---START - Iterating over array of trust records-->
+			<template iterator:it={lstTrustData} class="slds-p-around_medium">
+				<ul key={it.value.index} class="slds-p-around_medium slds-m-around_medium form-element main-container">
+					<div class="slds-grid slds-wrap">
+						<lightning-input data-index={it.index} name='Full_Legal_Name_Of_the_Trust__c' label={label.UI_Input_Label_TrustLegalName} value={it.value.Full_Legal_Name_Of_the_Trust__c} required message-when-value-missing={utillCmpObject.objErrorMessages.Full_legal_name_of_the_trust} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+						<lightning-input data-index={it.index} name='Estimated_Current_Value__c' label={label.UI_Input_Label_EstValueQue} value={it.value.Estimated_Current_Value__c} required type="number" formatter="currency" message-when-value-missing={utillCmpObject.objErrorMessages.Estimated_current_value} placeholder="£0.00" pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-input>
+          </div>
+          
+					<div class="slds-grid slds-wrap">
+						<lightning-combobox data-index={it.index} name='Select_Country_Of_Establishment__c' required class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" label={label.UI_Input_Label_EstCountry} options={lstCountry} value={it.value.Select_Country_Of_Establishment__c} placeholder="Select country of establishment" message-when-value-missing={utillCmpObject.objErrorMessages.Country_of_establishment} onchange={handleChange}></lightning-combobox>
+						<lightning-radio-group data-index={it.index} name={it.index} data-name="Dividends_Received__c" label={label.UI_Text_Label_DivDisQue} value={it.value.Dividends_Received__c} required message-when-value-missing={utillCmpObject.objErrorMessages.Dividends_or_distributions} options={options} type="radio" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-left" onchange={handleChange}></lightning-radio-group>
+						<template if:true={it.value.radioFlag}>
+							<lightning-input data-index={it.index} name='Amount_Received_Annually__c' label={label.UI_Input_Label_AnnualReceivingsQue} value={it.value.Amount_Received_Annually__c} required pattern="([0-9.£,]*)$" message-when-pattern-mismatch={utillCmpObject.objErrorMessages.Allow_only_digits} type="number" formatter="currency" message-when-value-missing={utillCmpObject.objErrorMessages.Receive_annually} placeholder="£0.00" class="slds-size--1-of-1 slds-medium-size--1-of-2  slds-large-size--1-of-2 slds-p-left_xx-small padding-right" onchange={handleChange}></lightning-input>
+						</template>
+					</div>
+        </ul>
+        
+				<!--Creating Delete icon for Trust records-->
+				<div class="buttonscontainer" key={it.value.index} if:true={showDeleteIcon}>
+					<button class="addbutton" data-index={it.index} title="Remove Record" onclick={removeRecord}>
+						<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+							<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg?cache=9.36.1#delete"></use>
+						</svg>
+					</button>
+				</div>
+      </template>
+      <!---END - Iterating over array of trust records-->
+
+    </template>
+
+		<!--Adding trust records for mobile-->
+		<div class="buttonscontainer">
+			<button class="addbutton mobhide" onclick={addTrust} title="Add Another Trust">
+				<svg class="slds-button__icon slds-button__icon_left" aria-hidden="true">
+					<use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#add"></use>
+				</svg>
+			</button>
+    </div>
+    
+      <a onclick={addTrust} class="mobileshow">{label.UI_Text_Label_AddAnother}</a>
+		<div class="width100">
+			<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+    </div>
+    
+	</template>
+</template>

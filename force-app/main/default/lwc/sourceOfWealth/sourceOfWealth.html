@@ -1,0 +1,31 @@
+<!-- ======================================================== 
+    * @method name : sourceOfWealth.html 
+    * @author : EY - Gupta 
+    * @purpose: This html file holds all sourceOfWealth records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<lightning-card>
+		<div class="slds-p-around_medium customClass  main-container "> <span>
+                <p>{label.UI_Text_Label_SourceOfWealthDesc}</p>
+            </span>
+			<div class="slds-grid slds-wrap">
+				<lightning-textarea name='Source_Of_Wealth__c' label={label.UI_Input_Label_SourceWealth} value={sourceOfWealthObj.Source_Of_Wealth__c} required message-when-value-missing={utillCmpObject.objErrorMessages.Source_of_wealth} class="slds-size--1-of-1 slds-medium-size--2-of-2  slds-large-size--2-of-2 slds-p-left_xx-small" onchange={handleChange}></lightning-textarea>
+            </div>
+            
+			<div class="slds-form-element">
+				<div class="slds-form-element__control">
+					<div class="slds-checkbox margintp40 checkbox"> <span class="tickbox"><lightning-input id="checkbox" type='checkbox' name="Source_of_Wealth_Check__c" required message-when-value-missing={utillCmpObject.objErrorMessages.Confirmation} value={Source_of_Wealth_Check__c} onchange={handleClick} checked={sourceOfWealthObj.Source_of_Wealth_Check__c}>
+                </lightning-input></span>
+						<label for="checkbox" class="content">I confirm that the information provided is correct and I have read and accept all of the information and <a href="https://www.oaknorth.co.uk/privacy-notice/lending-products/" target="blank">Privacy Notice </a>document provided.</label>
+					</div>
+				</div>
+            </div>
+            
+		</div>
+		<div class="width100">
+			<button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+        </div>
+        
+	</lightning-card>
+</template>

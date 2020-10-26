@@ -1,0 +1,199 @@
+.padding-left {
+    padding-left: 15px;
+}
+
+.padding-right {
+    padding-right: 15px;
+}
+
+a {
+    color: #000;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.content {
+    width: 85%;
+    float: left;
+    line-height: 20px;
+    display: inline-block;
+    padding-top: 10px;
+}
+
+.heading1 {
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.tickbox {
+    float: left;
+    width: 35px;
+    padding-top: 3px;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+p {
+    margin: 0px;
+    font-size: 14px;
+    line-height: 28px;
+    margin-top: 0px;
+}
+
+.primary-button:hover {
+    color: #000;
+}
+
+.primary-button {
+    background: #39AC7C;
+    width: 257px;
+    height: 48px;
+    border: none;
+    outline: none;
+    border-radius: 41px;
+    color: #fff;
+    font-size: 18px;
+    margin: 60px 0;
+    line-height: 0px;
+    padding: 0px;
+    text-align: center;
+    margin: 53px auto 50px auto
+}
+
+.width100 {
+    width: 100%;
+    display: block;
+    clear: both;
+    text-align: center;
+}
+
+.addbutton {
+    border: none;
+    background: #9cd6be;
+    border-radius: 4px;
+    width: 43px;
+    height: 43px;
+    margin: 10px 10px 0 10px;
+    -webkit-transition: all .5s ease;
+    outline: none;
+    float: right;
+}
+
+.addbutton:hover {
+    background: #39ac7c;
+    outline: none;
+}
+
+.addbutton svg {
+    fill: rgb(255, 255, 255);
+    padding: 0px;
+    margin: 0px;
+    width: 23px;
+    height: 23px;
+}
+
+.mobileshow {
+    display: none;
+}
+
+.button {
+    width: 100%;
+    display: block
+}
+
+.margintp40 {
+    margin-top: 20px;
+}
+
+.main-container {
+    padding: 0px 32px
+}
+
+
+/*Mobile Media Query */
+
+
+/* Media Query for Mobile Devices */
+
+@media (max-width: 480px) {
+    .mobileshow {
+        display: block;
+        color: #000;
+        text-decoration: underline;
+        display: block;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .primary-button {
+        margin: 30px 0px
+    }
+    .padding-left {
+        padding-left: 0px;
+    }
+    .mobhide {
+        display: none;
+    }
+    .padding-right {
+        padding-right: 05px;
+    }
+    .main-container {
+        padding: 0px 20px;
+    }
+}
+
+
+/* Media Query for low resolution  Tablets, Ipads */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .mobileshow {
+        display: block;
+        color: #000;
+        text-decoration: underline;
+        display: block;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+    .primary-button {
+        margin: 30px 0px
+    }
+    .mobhide {
+        display: none;
+    }
+    .padding-left {
+        padding-left: 10px;
+    }
+    .padding-right {
+        padding-right: 10px;
+    }
+    .main-container {
+        padding: 0px 30px;
+    }
+}
+
+
+/* Media Query for Tablets Ipads portrait mode */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .main-container {
+        padding: 0px 30px
+    }
+    .mobileshow {
+        display: none;
+    }
+    .primary-button {
+        margin: 30px 0px
+    }
+    .padding-left {
+        padding-left: 10px;
+    }
+    .padding-right {
+        padding-right: 10px;
+    }
+}

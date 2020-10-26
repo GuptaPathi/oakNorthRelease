@@ -1,0 +1,28 @@
+<!-- ======================================================== 
+    * @template name : liabilitiesSummary.html 
+    * @author : EY - Ranjith 
+    * @purpose: This html file holds all investmentportfolio records data.
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+    <div class="container">
+        <h1 class="heading1">{strLiabilitiesHeading}</h1>
+        <template if:true={bolLiabilityTable}>
+            <!--START of liabilities table-->
+            <template for:each={utillCmpObject.formUpdatedData.Property} for:item="eachLiability">
+
+                <div class="greentile" key={eachLiability.Id} if:true={eachLiability.Outstanding_Mortgage_Check__c}>
+
+                    <span if:true={eachLiability.Street__c} class="liablitysec"> {eachLiability.Street__c}</span>
+                    <span if:false={eachLiability.Street__c} class="liablitysec">{eachLiability.Property_Type__c}</span>
+                    <span class="liablitysec"> {eachLiability.Outstanding_Balance__c}</span>
+                </div>
+
+            </template>
+             <!--END of liabilities table-->
+        </template>
+    </div>
+    <div class="width100">
+        <button name="pi" onclick={handleNext} slot="footer" class="primary-button">{label.UI_Button_Label_Next}</button>
+    </div>
+</template>

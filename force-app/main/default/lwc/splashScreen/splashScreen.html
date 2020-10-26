@@ -1,0 +1,46 @@
+<!-- ======================================================== 
+    * @method name : splashScreen.html 
+    * @author : EY - Gupta 
+    * @purpose: 
+    * @created date (dd/mm/yyyy) : 20/08/2020 
+============================================================-->
+<template>
+	<template if:true={entireModal}>
+		<section role="dialog" tabindex="-1" aria-labelledby="welcome-mat-100-label" aria-describedby="welcome-mat-100-content" aria-modal="true" class="splash_box">
+			<div class="slds-grid slds-gutters">
+
+				<div class="formobile">	<span><img src={OakNorthLogo} style="width:60%;" /></span>
+					<h1 class="info">{label.UI_Text_Label_CDD}</h1>
+					<div class="description">
+						<p>{label.UI_Text_Label_CDDDesc}</p>
+					</div>
+
+					<div class="">
+						<button onclick={startForm} class="primary-button">{label.UI_Button_Label_GetStarted}</button>
+					</div>
+
+					<div class="description2">
+						<p>{label.UI_Text_Label_AutoSave}</p>
+					</div>
+
+				</div>
+				<div class="width">
+
+					<div class="rightSideContentBox">
+						<c-splash-right-content utill-cmp-object={utillCmpObject}></c-splash-right-content>
+					</div>
+
+				</div>
+			</div>
+
+		</section>
+	</template>
+<div class="mobilefix">
+    <a class="slds-hide_small slds-text-align_center slds-var-p-around_large mobilebutton" href="#mobilescreen" onclick={startForm}>{label.UI_Button_Label_GetStarted}</a>
+
+    <div class="description2 ">
+        <p>{label.UI_Text_Label_CDDDesc2}</p>
+    </div>
+
+</div>
+</template>

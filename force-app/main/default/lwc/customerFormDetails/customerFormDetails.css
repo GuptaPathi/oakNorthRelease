@@ -1,0 +1,23 @@
+.oak_container2 {
+    background: #d2d2d2;
+    width: 200px;
+}
+
+.readonly {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.canfill {
+    opacity: 1;
+}
+
+.margin30 {
+    margin: 0px 30px 30px 30px
+}
+
+@media only screen and (max-width: 600px) {
+    .margin30 {
+        margin: 0px 10px 10px 10px
+    }
+}
